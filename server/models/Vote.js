@@ -1,10 +1,18 @@
 // Should this be a model or a type?
 const { Schema, model } = require("mongoose");
+
+// Create a vote 
 const voteSchema = new Schema(
   {
-    voteRating: Number,
+    rating: Number,
     require: true,
     default: 0,
+    min: 0, 
+    max: 5,
+    dateCreated: {
+        type: Date, 
+        default: Date.now
+    }
   },
   {
     toJSON: {
