@@ -3,25 +3,18 @@ const Vote = require('./Vote');
 
 const gordSchema = new Schema(
     {
-        name: String, 
-        bio: String, 
-        image: String, 
-        required: true
-    }, 
-    {
-        votes: [Vote]
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
+        name: {
+            type:String, 
+            bio: String, 
+            image: String, 
+            required: true
+        }, 
+            votes: [Vote]
     },
 );
 
-gordSchema.virtual('totalVoteScore').get(function(){
-    return this.
-    // How to return sum of all votes
-});
+// make virtual for vote length
+
 // initialize gord model
 const Gord = model('gord', gordSchema);
 

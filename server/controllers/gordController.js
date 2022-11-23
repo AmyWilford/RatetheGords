@@ -1,4 +1,4 @@
-const { Gord } = require("../models");
+const { Gord, Vote } = require("../models");
 
 module.exports = {
   // Get all the gords and their total score
@@ -6,7 +6,8 @@ module.exports = {
     Gord.find()
       .select("-__v")
       .populate("votes")
-      .then((gords) => res.json(gords))
+      .then((gords) => 
+      res.json(gords))
       .catch((err) => res.status(500).json(err));
   },
   // Get a single Gords and their total scores
