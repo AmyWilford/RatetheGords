@@ -1,4 +1,15 @@
+const { ObjectId } = require('mongoose').Types;
 const { Gord } = require("../models");
+
+// const totalGordVotes =  (gordId) =>
+// Gord.aggregate([
+//   {$match: {_id:ObjectId(gordId)}},
+//   {$unwind: 'votes'},
+//   {$group: {
+//     _id: ObjectId(gordId),
+//     voteTotal: {$sum: "votes.rating"}
+//   }}
+// ]);
 
 module.exports = {
   // Get all the gords and their total score

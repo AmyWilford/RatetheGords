@@ -11,8 +11,8 @@ const voteSchema = new Schema(
     rating: {
       type: Number,
       require: true,
-      default: 0,
-      min: 0,
+      // default: 0,
+      min: 1,
       max: 5,
     },
     createdAt: {
