@@ -1,39 +1,53 @@
 // Should this be a model or a type?
-const { Schema , model } = require("mongoose");
-const Gord = require("./Gord");
-
+const { Schema , Types } = require("mongoose");
+// const Gord = require("./Gord");
 
 const voteSchema = new Schema(
   {
+    ratingId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
     rating: {
       type: Number,
       require: true,
       default: 0,
       min: 0,
       max: 5,
-      dateCreated: {
-        type: Date,
-        default: Date.now,
-      },
     },
-    gordId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Gord'
-    },
-  },
-
-//   {
-//     toJSON: {
-//       virtuals: true,
-//     },
-//   }
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    }
+  }
 );
 
-// Get total number of votes placed
-// voteSchema.virtual("totalVotesPlaced").get(function () {
-//   return this.rating.length;
-// });
+module.exports = voteSchema;
+
+
+// const { Schema , model } = require("mongoose");
+// const Gord = require("./Gord");
+
+
+// const voteSchema = new Schema(
+//   {
+//     rating: {
+//       type: Number,
+//       require: true,
+//       default: 0,
+//       min: 0,
+//       max: 5,
+//       dateCreated: {
+//         type: Date,
+//         default: Date.now,
+//       },
+//     },
+//     gordId: {
+//       type: Schema.Types.ObjectId,
+//       ref: 'Gord'
+//     },
+//   },
 
 // const Vote = model("vote", voteSchema);
 
-module.exports = voteSchema;
+// module.exports = voteSchema;

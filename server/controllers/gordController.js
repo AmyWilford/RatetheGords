@@ -1,25 +1,43 @@
-const { Gord, Vote } = require("../models");
+const { Gord } = require("../models");
 
 module.exports = {
   // Get all the gords and their total score
   getAllGords(req, res) {
     Gord.find()
       .select("-__v")
-      .populate("votes")
-      .then((gords) => 
-      res.json(gords))
+      .then((gords) => res.json(gords))
       .catch((err) => res.status(500).json(err));
   },
+
   // Get a single Gords and their total scores
   getSingleGord(req, res) {
     Gord.findOne({ _id: req.params.gordId })
       .select("-__v")
-      .populate("votes")
       .then((gord) =>
         !gord
           ? res.status(404).json({ message: "No Gord Found" })
           : res.json(gord)
       )
       .catch((err) => res.status(500).json(err));
+  },
+
+  createVote(req, res) {
+    console.log(req.params);
+    console.log(req.body);
+    Gord.findOneAndUpdate(
+      { _id: req.params.gordId },
+      { $addToSet: { votes: req.body } },
+      { new: true }
+    )
+      .then((gord) => {
+        !gord
+          ? res.status(404).json({ message: "Could not add your vote" })
+          : res.json(gord);
+      })
+
+      .catch((err) => {
+        res.status(500).json(err);
+        console.log(err);
+      });
   },
 };

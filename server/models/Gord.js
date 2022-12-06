@@ -1,22 +1,46 @@
-const {Schema, model} = require('mongoose');
-const Vote = require('./Vote');
+const { Schema, model } = require("mongoose");
+const voteSchema = require('./Vote');
 
-const gordSchema = new Schema(
-    {
-        name: {
-            type:String, 
-            bio: String, 
-            image: String, 
-            required: true
-        }, 
-            votes: [Vote]
-    },
-);
+const gordSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  bio: {
+    type: String,
+  }, 
+  imageSrc: {
+    type: String
+  },
+  votes: [voteSchema],
+});
 
-// make virtual for vote length
+const Gord = model("gord", gordSchema);
 
-// initialize gord model
-const Gord = model('gord', gordSchema);
-
-// Export Gord Model
 module.exports = Gord;
+
+
+// const { Schema, model } = require("mongoose");
+// // const Vote = require('./Vote');
+
+// const gordSchema = new Schema({
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+//   bio: {
+//     type: String,
+//   }, 
+//   imageSrc: {
+//     type: String
+//   },
+//   votes: [Votes],
+// });
+
+// // make virtual for vote length
+
+// // initialize gord model
+// const Gord = model("gord", gordSchema);
+
+// // Export Gord Model
+// module.exports = Gord;
