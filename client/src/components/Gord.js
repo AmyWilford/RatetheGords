@@ -36,7 +36,15 @@ const Gord = () => {
   return (
     <div>
       <h1>{allGords.length}</h1>
-      <p></p>
+        <div>
+            {allGords.map((gord)=>(
+                <div>
+
+                <p>{gord.name}</p>
+                <p>{gord.bio}</p>
+                </div>
+            ))}
+        </div>
       {/* show the number of gords to prove that info is actually pulling. Will access details later */}
     </div>
   );
