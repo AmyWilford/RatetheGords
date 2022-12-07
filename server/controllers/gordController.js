@@ -1,12 +1,12 @@
-const { ObjectId } = require('mongoose').Types;
+// const { ObjectId } = require('mongoose').Types;
 const { Gord } = require("../models");
 
 // const totalGordVotes =  (gordId) =>
 // Gord.aggregate([
-//   {$match: {_id:ObjectId(gordId)}},
+//   {$match: {_id:gordId}},
 //   {$unwind: 'votes'},
 //   {$group: {
-//     _id: ObjectId(gordId),
+//     _id: gordId,
 //     voteTotal: {$sum: "votes.rating"}
 //   }}
 // ]);
@@ -36,7 +36,7 @@ module.exports = {
     console.log(req.params);
     console.log(req.body);
     Gord.findOneAndUpdate(
-      { _id: req.params.gordId },
+      { _id: req.body.gordId },
       { $addToSet: { votes: req.body } },
       { new: true }
     )
