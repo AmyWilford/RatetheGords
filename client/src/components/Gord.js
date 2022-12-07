@@ -5,50 +5,40 @@ import { getGords } from "../utils/API";
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
 
-    const getTheGords = async () => {
-      try {
-        const response = getGords();
-        console.log(response);
-        if (!response.ok) {
-          throw new Error("could not fetch the gords");
-        }
-
-        // const { items } = await response.json();
-
-        // const gordData = items.map((gord) => ({
-        //   gordId: gord._id,
-        //   name: gord.name,
-        //   bio: gord.bio,
-        // }));
-        setAllGords(response);
-      } catch (err) {
-        console.error(err);
+  const getTheGords = async () => {
+    try {
+      const response = await getGords();
+      console.log(response);
+      if (!response.ok) {
+        throw new Error("could not fetch the gords");
       }
-    };
+      let data = await response.json();
+      console.log(data);
+      console.log(data[0].name);
+      // const { items } = await response.json();
+
+      // const gordData = items.map((gord) => ({
+      //   gordId: gord._id,
+      //   name: gord.name,
+      //   bio: gord.bio,
+      // }));
+
+      setAllGords(data);
+      console.log(allGords);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
     getTheGords();
+  }, []);
 
   return (
     <div>
-      <h1>we are gords</h1>
-      <p>{allGords.length}</p>
+      <h1>{allGords.length}</h1>
+      <p></p>
       {/* show the number of gords to prove that info is actually pulling. Will access details later */}
     </div>
   );
 };
-
-// const [allGords, setAllGords] = useState([]);
-
-// useEffect(() => {
-//   const getGordData = async () => {
-//     const response = await getGords();
-
-//     if (!response.ok) {
-//       throw new Error("could not get the gords");
-//     }
-//     const gords = await response.json();
-//     setAllGords(gords);
-//     console.log("this worked");
-//   };
-//   getGordData();
-// });
 export default Gord;
