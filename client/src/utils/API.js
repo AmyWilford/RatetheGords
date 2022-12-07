@@ -1,6 +1,6 @@
 export const getGords = () => {
   console.log("i work");
-  return fetch("/", {
+  return fetch("/api/gords", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -8,7 +8,7 @@ export const getGords = () => {
 };
 
 export const createVote = (gordData) => {
-  return fetch("/", {
+  return fetch("/api/gords", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

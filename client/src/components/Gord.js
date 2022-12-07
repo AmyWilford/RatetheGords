@@ -5,7 +5,6 @@ import { getGords } from "../utils/API";
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
 
-  useEffect(() => {
     const getTheGords = async () => {
       try {
         const response = getGords();
@@ -14,20 +13,19 @@ const Gord = () => {
           throw new Error("could not fetch the gords");
         }
 
-        const { items } = await response.json();
+        // const { items } = await response.json();
 
-        const gordData = items.map((gord) => ({
-          gordId: gord._id,
-          name: gord.name,
-          bio: gord.bio,
-        }));
-        setAllGords(gordData);
+        // const gordData = items.map((gord) => ({
+        //   gordId: gord._id,
+        //   name: gord.name,
+        //   bio: gord.bio,
+        // }));
+        setAllGords(response);
       } catch (err) {
         console.error(err);
       }
     };
     getTheGords();
-  }, []);
 
   return (
     <div>
