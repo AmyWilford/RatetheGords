@@ -1,41 +1,41 @@
 [
     {
         "name": "Gord Downie",
-        "img": "Image Gord Downie", 
+        "img": "./assets/gord-downie.png", 
         "bio": "Singer-songwriter, activist, and frontman of Canaidan rock band The Tragically Hip, from Kingston Ontario." 
     }, 
     {
         "name": "Gordie Howe",
-        "img": "Image Gordie Howe", 
+        "img": "./assets/gordie-howe.png", 
         "bio": "Nicknamed Mr. Hockey, a professional ice hockey player from Floral, Saskatchewan. " 
     }, 
     {
         "name": "Gordon Lightfoot",
-        "img": "Image Gordon Lightfoot", 
+        "img": "./assets/gordon-lightfoot.png", 
         "bio": "GordonLightfoot bio" 
     }, 
     {
         "name": "Ranger Gord",
-        "img": "Image Ranger Gord", 
+        "img": "./assets/ranger-gord.png", 
         "bio": "Ranger Gord bio" 
     }, 
     {
         "name": "Gordie Johnson",
-        "img": "Image Gordie Johnson", 
+        "img": "./assets/gordie-johnson.png", 
         "bio": "Bio Gordie Johnson" 
     }, 
     {
         "name": "Gord Martineau",
-        "img": "Image Gord Martineau", 
+        "img": "./assets/gord-martineau.png", 
         "bio": "Bio Gord Martineau" 
     }, 
     {
         "name": "Gordon",
-        "img": "Image Gordon", 
+        "img": "./assets/gordon.png", 
         "bio": "Bio Gordon" 
     },    {
         "name": "Gourd",
-        "img": "Image Gourd", 
+        "img": "./assets/gord.png", 
         "bio": "Bio Gourd" 
     }
 ]

@@ -35,16 +35,17 @@ const Gord = () => {
 
   return (
     <div>
-      <h1>{allGords.length}</h1>
-        <div>
-            {allGords.map((gord)=>(
-                <div>
-
-                <p>{gord.name}</p>
-                <p>{gord.bio}</p>
-                </div>
-            ))}
+      <div className="container">
+        <div className="row d-flex flex-wrap">
+          {allGords.map((gord) => (
+            <div className="border">
+              <p>{gord.name}</p>
+              <p>{gord.bio}</p>
+              <img src={gord.img} alt="gord"></img>
+            </div>
+          ))}
         </div>
+      </div>
       {/* show the number of gords to prove that info is actually pulling. Will access details later */}
     </div>
   );

@@ -9,8 +9,8 @@ const {
 
 router.route('/api/gords').get(getAllGords).post(createVote);
 
-router.route('/:gordId').get(getSingleGord);
-// router.route('/').get(getAllVotes).post(createVote);
+router.route('/api/gords/:gordId').get(getSingleGord);
+// router.route('/').post(createVote);
 
 // router.use((req, res) => {
 //     res.sendFile(path.join(dirname, '../../client/build/index.html'));
