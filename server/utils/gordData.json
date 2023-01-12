@@ -5,12 +5,12 @@
         "bio": "Singer-songwriter, activist, and frontman of Canaidan rock band The Tragically Hip, from Kingston Ontario." 
     }, 
     {
-        "name": "Gordie Howe",
+        "name": "Gord Howe",
         "img": "./assets/gordie-howe.png", 
         "bio": "Nicknamed Mr. Hockey, a professional ice hockey player from Floral, Saskatchewan. " 
     }, 
     {
-        "name": "Gordon Lightfoot",
+        "name": "Gord Lightfoot",
         "img": "./assets/gordon-lightfoot.png", 
         "bio": "GordonLightfoot bio" 
     }, 
@@ -20,7 +20,7 @@
         "bio": "Ranger Gord bio" 
     }, 
     {
-        "name": "Gordie Johnson",
+        "name": "Gord Johnson",
         "img": "./assets/gordie-johnson.png", 
         "bio": "Bio Gordie Johnson" 
     }, 
