@@ -20,15 +20,30 @@ const { Gord } = require("../models");
 
 module.exports = {
   // Get all the gords and their total score
+  // getAllGords(req, res) {
+  //   Gord.find()
+  //     .select("-__v")
+  //     .then((gords) => res.json(gords))
+  //     .catch((err) => res.status(500).json(err));
+  // },
   getAllGords(req, res) {
-    Gord.find()
-      .select("-__v")
-      .then((gords) => res.json(gords))
-      .catch((err) => res.status(500).json(err));
+    Gord.aggregate(
+      [
+        {$sample: {size: 8},},
+      ],
+      (err, result)=> {
+        if(err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(result);
+        }
+      }
+    )
   },
 
   // Get a single Gords and their total scores
   getSingleGord(req, res) {
+    console.log(req)
     Gord.findOne({ _id: req.params.gordId })
       .select("-__v")
       .then((gord) =>
@@ -58,4 +73,10 @@ module.exports = {
         console.log(err);
       });
   },
+
+  // createVotes(req, res) {
+  //   console.log(req.params);
+  //   console.log(req.body);
+  //   Gord.
+  // }
 };

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getGords } from "../utils/API";
-
+import { getGords, createVote } from "../utils/API";
+import "./styles.css";
 // export default function Gord() {
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
+// const gordId = document.getElementById('gordId');
+const gordVote = document.getElementById('gordRating')
 
   const getTheGords = async () => {
     try {
@@ -13,35 +15,41 @@ const Gord = () => {
         throw new Error("could not fetch the gords");
       }
       let data = await response.json();
-      console.log(data);
-      console.log(data[0].name);
-      // const { items } = await response.json();
-
-      // const gordData = items.map((gord) => ({
-      //   gordId: gord._id,
-      //   name: gord.name,
-      //   bio: gord.bio,
-      // }));
-
       setAllGords(data);
-      console.log(allGords);
     } catch (err) {
       console.error(err);
     }
   };
+
+  // const handleVote = async(event) => {
+   
+  //   try {
+  //     const response = await createVote(gordId, gordVote);
+  //     if(!response.ok) {
+  //       throw new Error ('something went wrong')
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
   useEffect(() => {
     getTheGords();
   }, []);
+  // the second parameter is an array - and whenever these values change ,the render will reun 
+  // an empty array is equivelent to [on mount]
 
   return (
     <div>
       <div className="container">
         <div className="row d-flex flex-wrap">
           {allGords.map((gord) => (
-            <div className="border">
-              <p>{gord.name}</p>
-              <p>{gord.bio}</p>
-              <img src={gord.img} alt="gord"></img>
+            <div key={gord._id} className="col-md-3 p-2">
+            <p id="gordId">{gord._id}</p>
+              <img src={gord.img} className="img-fluid" alt="gord"></img>
+              <p className="text-center">{gord.name}</p>
+              <input id="gordRating" type="number"></input>
+              <button type="submit" className="btn btn-warning" >submit vote</button>
             </div>
           ))}
         </div>
