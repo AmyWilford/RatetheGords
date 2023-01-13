@@ -1,5 +1,6 @@
 const { ObjectId } = require("mongoose").Types;
 const { Gord } = require("../models");
+const { db } = require("../models/Gord");
 
 // const totalGordVotes = (gordId) =>
 const totalRatingPerGord = async (gordId) =>
@@ -34,41 +35,35 @@ module.exports = {
     });
   },
 
-  // getAllVotes(req, res) {
-  //   Gord.aggregate(
-  //     [
-  //       { $match: { _id: ObjectId(gordId) } },
-  //       {
-  //         $unwind: "$votes",
-  //       },
-  //       {
-  //         $group: {
-  //           _id: null,
-  //           total_rating: { $sum: "$votes.rating" },
-  //         },
-  //       },
-  //     ],
-  //     (err, result) => {
-  //       if (err) {
-  //         res.status(500).send(err);
-  //       } else {
-  //         res.status(200).send(result);
-  //       }
-  //     }
-  //   );
-  // },
+  getAllVotes(req, res) {
+    Gord.aggregate(
+      [
+        {$votes: {
+          totalRanking: {$sum: "$rating"}
+        }
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(result);
+        }
+      }
+    );
+  },
 
   // Get a single Gords and their total scores
   getSingleGord(req, res) {
     console.log(req);
-    Gord.findOne({ _id: req.params.gordId })
+    Gord.findOne({ _id: req.body.gordId })
       .select("-__v")
       .then(async (gord) =>
         !gord
           ? res.status(404).json({ message: "No Gord Found" })
           : res.json({ 
             gord, 
-            totalRatingPerGord: await totalRatingPerGord(req.params.gordId),
+            totalRatingPerGord: await totalRatingPerGord(req.body.gordId),
            })
       )
       .catch((err) => res.status(500).json(err));
