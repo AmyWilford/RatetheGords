@@ -1,15 +1,15 @@
-const router = require('express').Router();
-const path = require('path');
+const router = require("express").Router();
+const path = require("path");
 
 const {
   getAllGords,
   getSingleGord,
   createVote,
-} = require('../controllers/gordController');
+  getAllVotes,
+} = require("../controllers/gordController");
 
-router.route('/api/gords').get(getAllGords).post(createVote);
-
-router.route('/api/gords/:gordId').get(getSingleGord);
+router.route("/api/gords").get(getAllGords).post(createVote);
+router.route("/api/gords/:gordId").get(getSingleGord);
 // router.route('/').post(createVote);
 
 // router.use((req, res) => {
@@ -17,7 +17,7 @@ router.route('/api/gords/:gordId').get(getSingleGord);
 //   });
 
 router.use((req, res) => {
-  res.sendFile(path.join(dirname, '../../client/build/index.html'));
+  res.sendFile(path.join(dirname, "../../client/build/index.html"));
 });
 
 module.exports = router;
