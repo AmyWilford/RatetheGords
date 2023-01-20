@@ -1,35 +1,64 @@
-.rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: #ffc700;    
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
+/* These styles are applied by default.
+   They will also override the hover
+   style for all stars to the right
+   of the currently hovered star. */
+   .rate button, .rate button:hover ~ button {
+    color: #222;
+    text-shadow: none;
+    transition: color 200ms,
+                text-shadow 200ms;
+    /* This will remove the delay when
+       moving the cursor left or right
+       within the set of stars. */
+    transition-delay: 0;
+  }
+  
+  /* This is the style that will be
+     applied to all stars and then
+     subsequently removed from the stars
+     to the right of the one being
+     hovered. */
+  .rate:hover button {
+    color: #fc0;
+    text-shadow: #fc0 0 0 20px;
+  }
+  
+  /* Make the effect apply one star at a
+     time. Limiting the selector to when
+     .rate is hovered removes the effect
+     without delay when cursor leaves
+     the .rate area. */
+  .rate:hover button:nth-child(2) {
+    transition-delay: 30ms;
+  }
+  
+  .rate:hover button:nth-child(3) {
+    transition-delay: 60ms;
+  }
+  
+  .rate:hover button:nth-child(4) {
+    transition-delay: 90ms;
+  }
+  
+  .rate:hover button:nth-child(5) {
+    transition-delay: 120ms;
+  }
+  
+  /* Miscellaneous styles. */
+  .rate button {
+    cursor: pointer;
+    font-style: normal;
+  }
+  
+  .rating-container {
+    align-items: center;
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    margin: 0;
+  }
+
+button {
+    border: none;
+    background-color: none;
+  }
