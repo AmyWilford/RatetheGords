@@ -2,17 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import { getGords, createVote } from "../utils/API";
-import Rating from "./Rating";
+import Rating from './Rating';
 import "./styles.css";
 // export default function Gord() {
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
-  const [childRating, setChildRating] = useState([]);
-
-  const chooseRating = (rating) => {
-    setChildRating([...childRating, rating]);
-    console.log(childRating);
-  };
   const [singleVote, setSingleVote] = useState({
     gordId: "",
     rating: "",
@@ -32,23 +26,24 @@ const Gord = () => {
   };
 
   const handleSubmit = async (event) => {
-    // let gordId;
-    // let rating;
-    // let allVotesArray = [];
-    // const allVotes = document.querySelectorAll(".gordRating");
-    // allVotes.forEach((vote) => {
-    //   gordId = vote.attributes.dataid.value;
-    //   rating = vote.value;
-    //   console.log(rating);
-    //   allVotesArray.push({ gordId, rating });
-    // });
-    // console.log(allVotesArray);
+    let gordId;
+    let rating;
+    let allVotesArray = [];
+    const allVotes = document.querySelectorAll(".gordRating");
+    allVotes.forEach((vote) => {
+      gordId = vote.attributes.dataid.value;
+      rating = vote.value;
+      allVotesArray.push({ gordId, rating });
+    });
+    console.log(allVotesArray);
 
-    // console.log(allVotesArray[0]);
+    console.log(allVotesArray[0]);
+    // const response = allVotesArray[0];
+    
+      allVotesArray.forEach((el) => {
+        const response = el;
+        const handleVote = () => {
 
-    childRating.forEach((el) => {
-      const response = el;
-      const handleVote = () => {
         fetch("/api/gords", {
           method: "POST",
           headers: {
@@ -61,7 +56,9 @@ const Gord = () => {
         });
       };
       handleVote();
-    });
+      });
+   
+
   };
   // const handleVote = async(event) => {
 
@@ -95,7 +92,6 @@ const Gord = () => {
                 min="1"
                 max="5"
               ></input>
-              <Rating gordId={gord._id} chooseRating={chooseRating} />
             </div>
           ))}
           <button
@@ -111,3 +107,4 @@ const Gord = () => {
   );
 };
 export default Gord;
+
