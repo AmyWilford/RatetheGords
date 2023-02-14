@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaCanadianMapleLeaf } from "react-icons/fa";
 import "./styles.css";
 
 const Rating = ({ gordId, chooseRating }) => {
@@ -20,7 +20,7 @@ const Rating = ({ gordId, chooseRating }) => {
   //     });
 
   return (
-    <div>
+    <div className="text-center">
       {[...Array(5)].map((star, i) => {
         const rating = i + 1;
         return (
@@ -37,10 +37,10 @@ const Rating = ({ gordId, chooseRating }) => {
               }}
               // onClick={() => chooseRating({gordId, rating})}
             />
-            <FaStar
-              className="star"
+            <FaCanadianMapleLeaf
+              className="mapleleaf"
               color={
-                rating <= (hover || assignedRating) ? "#ffc107" : "#e4e5e9"
+                rating <= (hover || assignedRating) ? "#ED452B" : "#e4e5e9"
               }
               size={30}
               onMouseEnter={() => setHover(rating)}

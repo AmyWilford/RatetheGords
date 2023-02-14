@@ -77,24 +77,17 @@ const Gord = () => {
         <div className="row d-flex flex-wrap">
           {allGords.map((gord) => (
             <div key={gord._id} className="col-md-3 p-2">
-              <img src={gord.img} className="img-fluid" alt="gord"></img>
-              <p className="text-center">{gord.name}</p>
-              {/* <input
-                className="gordRating"
-                dataid={gord._id}
-                type="number"
-                min="1"
-                max="5"
-              ></input> */}
+              <img src={gord.img} className="img-fluid gord-img" alt="gord"></img>
+              <p className="text-center gord-name">{gord.name}</p>
               <Rating gordId={gord._id} chooseRating={chooseRating} />
             </div>
           ))}
           <button
             type="submit"
             onClick={handleSubmit}
-            className="btn btn-warning"
+            className=" custom-bg"
           >
-            submit vote
+            submit
           </button>
         </div>
       </div>
