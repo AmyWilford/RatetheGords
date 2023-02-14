@@ -56,14 +56,14 @@ module.exports = {
   // Get a single Gords and their total scores
   getSingleGord(req, res) {
     console.log(req);
-    Gord.findOne({ _id: req.body.gordId })
+    Gord.findOne({ _id: req.params.id })
       .select("-__v")
       .then(async (gord) =>
         !gord
           ? res.status(404).json({ message: "No Gord Found" })
           : res.json({ 
             gord, 
-            totalRatingPerGord: await totalRatingPerGord(req.body.gordId),
+            totalRatingPerGord: await totalRatingPerGord(req.params.id),
            })
       )
       .catch((err) => res.status(500).json(err));

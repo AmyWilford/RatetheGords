@@ -6,7 +6,22 @@ export const getGords = () => {
       },
     });
   };
+
+  export const getSingleGord = (gordId) => {
+    fetch("/api/gords/ranks", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gordId),
+    }).catch((err) => {
+      console.error(err);
+      return;
+    });
+  };
   
+
+
   export const createVote = (gordData) => {
     return fetch('/api/gords', {
       method: 'POST',
@@ -18,3 +33,4 @@ export const getGords = () => {
       console.log(error);
     });
   };
+

@@ -9,7 +9,9 @@ const {
 } = require("../controllers/gordController");
 
 router.route("/api/gords").get(getAllGords).post(createVote);
-router.route("/api/gords/loop").get(getSingleGord);
+// router.route("/api/gords/ranks").get(getSingleGord);
+router.route("/api/gords/:id").get(getSingleGord);
+
 router.route("/api/tally").get(getAllVotes);
 
 // router.use((req, res) => {

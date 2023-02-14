@@ -31,12 +31,17 @@ const Rating = ({ gordId, chooseRating }) => {
               dataid={gordId}
               name="rating"
               value={rating}
-              onClick={() => {setAssignedRating(rating); chooseRating({gordId, rating})}}
+              onClick={() => {
+                setAssignedRating(rating);
+                chooseRating({ gordId, rating });
+              }}
               // onClick={() => chooseRating({gordId, rating})}
             />
             <FaStar
               className="star"
-              color={rating <= (hover || assignedRating) ? "#ffc107" : "#e4e5e9"}
+              color={
+                rating <= (hover || assignedRating) ? "#ffc107" : "#e4e5e9"
+              }
               size={30}
               onMouseEnter={() => setHover(rating)}
               onMouseLeave={() => setHover(null)}
