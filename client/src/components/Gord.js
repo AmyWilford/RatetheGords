@@ -77,18 +77,20 @@ const Gord = () => {
         <div className="row d-flex flex-wrap">
           {allGords.map((gord) => (
             <div key={gord._id} className="col-md-3 p-2">
-              <img src={gord.img} className="img-fluid gord-img" alt="gord"></img>
+              <img
+                src={gord.img}
+                className="img-fluid gord-img"
+                alt="gord"
+              ></img>
               <p className="text-center gord-name">{gord.name}</p>
               <Rating gordId={gord._id} chooseRating={chooseRating} />
             </div>
           ))}
-          <button
-            type="submit"
-            onClick={handleSubmit}
-            className=" custom-bg"
-          >
-            submit
-          </button>
+          <div className="d-flex w-100 justify-content-end">
+            <button type="submit" onClick={handleSubmit}>
+              submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

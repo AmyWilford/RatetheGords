@@ -28,7 +28,10 @@ input[type="radio"]{
 
 button {
   border-radius: 25px;
-  border: none;
+  background-color: white;
+  font-weight: bold;
+  border: 2px solid #ED452B;
+  color: #ED452B;
   text-align: center;
   font-size: 18px;
   padding: 14px;
@@ -36,7 +39,6 @@ button {
   transition: all 0.5s;
   cursor: pointer;
   margin: 3rem;
-  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 button{
   cursor: pointer;
@@ -51,14 +53,15 @@ button:after {
   top: 14px;
   right: -20px;
   transition: 0.5s;
-  color: white;
 }
 button:hover{
   padding-right: 24px;
   padding-left:8px;
+  background-color: #ED452B;
+  color: white;
 }
 
 button:hover:after {
   opacity: 1;
-  right: 10px;
+  right: 20px;
 }
