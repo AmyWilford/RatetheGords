@@ -28,15 +28,8 @@ module.exports = {
   // },
   getAllGords(req, res) {
     Gord.aggregate(
-      // [{ $sample: { size: 8 } }],
-      [
-        { $unwind: "$votes" },
-        {
-          $group: {
-            vote_sum: { $sum: "$votes.rating" },
-          },
-        },
-      ],
+      [{ $sample: { size: 8 } }],
+      
       (err, result) => {
         if (err) {
           res.status(500).send(err);

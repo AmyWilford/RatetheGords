@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { RiCloseLine } from "react-icons/ri";
-import { getGords, createVote, getSingleGord } from "../utils/API";
+import { getGords, getAllVotes } from "../utils/API";
 import "./styles.css";
 
 const MODAL_STYLES = {
@@ -24,44 +24,26 @@ const OVERLAY_STLYE = {
 };
 
 const Modal = ({ open, children, onClose }) => {
-  const [allGords, setAllGords] = useState([]);
+  // const [allGords, setAllGords] = useState([]);
   const [allVotes, setAllVotes] = useState([]);
 
-  const getTheGords = async () => {
+  const getVotes = async () => {
     try {
-      const response = await getGords();
+      const response = await getAllVotes();
       console.log(response);
       if (!response.ok) {
         throw new Error("could not fetch the gords");
       }
       let data = await response.json();
-      setAllGords(data);
-      allGords.forEach((el) => {
-        getGordVoteTally(el._id);
-      });
+      setAllVotes(data);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const getGordVoteTally = (id) => {
-    try {
-      const response = getSingleGord(id);
-      console.log(id);
-      if (!response.ok) {
-        throw new Error("could not locate the gord");
-      }
-      let voteData = response.json();
-      console.log(voteData);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    getTheGords();
+    getVotes();
   }, []);
-  console.log(allGords);
 
   if (!open) return null;
   return (
@@ -70,12 +52,9 @@ const Modal = ({ open, children, onClose }) => {
       <div style={MODAL_STYLES}>
         <RiCloseLine onClick={onClose} />
         {children}
-        {allGords.map((gord) => (
-          <div key={gord._id} className="col-md-3 p-2">
-            <p className="text-center gord-name">{gord.name}</p>
-            {getGordVoteTally(gord._id)}
-          </div>
-        ))}
+        {allVotes.forEach((vote) => {
+          console.log(vote.name + ": " + vote.vote_sum);
+        })}
       </div>
     </>
   );

@@ -6,6 +6,14 @@ export const getGords = () => {
   });
 };
 
+export const getAllVotes = () => {
+  return fetch("/api/tally", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
 export const getSingleGord = (id) => {
   return fetch(`/api/gords/ranks`, {
     headers: {
