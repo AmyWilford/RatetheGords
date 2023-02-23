@@ -36,10 +36,15 @@ const Modal = ({ open, children, onClose }) => {
       }
       let data = await response.json();
       setAllVotes(data);
+      console.log(allVotes);
     } catch (err) {
       console.error(err);
     }
   };
+
+  console.log(allVotes.sort((a,b) => a.vote_sum - b.vote_sum));
+
+  
 
   useEffect(() => {
     getVotes();
@@ -52,7 +57,7 @@ const Modal = ({ open, children, onClose }) => {
       <div style={MODAL_STYLES}>
         <RiCloseLine onClick={onClose} />
         {children}
-        {allVotes.forEach((vote) => {
+        {allVotes.sort((vote) => {
           console.log(vote.name + ": " + vote.vote_sum);
         })}
       </div>
