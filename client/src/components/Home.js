@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div>
       <div className="custom-bg">
-        <h1 className="text-center">Rate the Gords</h1>
-        <div className="d-flex flex-column justify-content-end">
+        <h1 className="text-center pb-0">Rate the Gords</h1>
+        <div className="d-flex justify-content-end">
           <button onClick={() => setIsOpen(true)}>see rankings</button>
           <Modal open={isOpen} onClose={() => setIsOpen(false)}>
             Fancy Modal

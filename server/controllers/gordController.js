@@ -1,4 +1,5 @@
 const { ObjectId } = require("mongoose").Types;
+const { RiNpmjsFill } = require("react-icons/ri");
 const { Gord } = require("../models");
 const { db } = require("../models/Gord");
 
@@ -26,21 +27,35 @@ module.exports = {
   //     .catch((err) => res.status(500).json(err));
   // },
   getAllGords(req, res) {
-    Gord.aggregate([{ $sample: { size: 8 } }], (err, result) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).send(result);
+    Gord.aggregate(
+      // [{ $sample: { size: 8 } }],
+      [
+        { $unwind: "$votes" },
+        {
+          $group: {
+            vote_sum: { $sum: "$votes.rating" },
+          },
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(result);
+        }
       }
-    });
+    );
   },
 
   getAllVotes(req, res) {
     Gord.aggregate(
       [
-        {$votes: {
-          totalRanking: {$sum: "$rating"}
-        }
+        {
+          $set: {
+            vote_sum: {
+              $sum: "$votes.rating",
+            },
+          },
         },
       ],
       (err, result) => {
@@ -61,10 +76,10 @@ module.exports = {
       .then(async (gord) =>
         !gord
           ? res.status(404).json({ message: "No Gord Found" })
-          : res.json({ 
-            gord, 
-            totalRatingPerGord: await totalRatingPerGord(req.params.id),
-           })
+          : res.json({
+              gord,
+              totalRatingPerGord: await totalRatingPerGord(req.params.id),
+            })
       )
       .catch((err) => res.status(500).json(err));
   },

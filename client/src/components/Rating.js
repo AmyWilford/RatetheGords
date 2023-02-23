@@ -21,7 +21,7 @@ const Rating = ({ gordId, chooseRating }) => {
 
   return (
     <div className="text-center">
-      {[...Array(5)].map((star, i) => {
+      {[...Array(5)].map((leaf, i) => {
         const rating = i + 1;
         return (
           <label>
