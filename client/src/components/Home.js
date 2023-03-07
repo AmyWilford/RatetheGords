@@ -10,8 +10,7 @@ export default function Home() {
         <h1 className="text-center pb-0">Rate the Gords</h1>
         <div className="d-flex justify-content-end">
           <button onClick={() => setIsOpen(true)}>POWER RANKINGS</button>
-          <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          </Modal>
+          <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
         </div>
       </div>
       <div>

@@ -1,19 +1,28 @@
-// WORKING VOTING REFERENCE
-
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getGords } from "../utils/API";
 import Rating from "./Rating";
 import "./styles.css";
-const Gord = () => {
+// export default function Gord() {
+const Gord = ({ isOpen }) => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
-  const [submited, setSubmited] = useState(false);
 
-  const chooseRating = (rating) => {
-    setSubmited(false);
-    setChildRating([...childRating, rating]);
+  const navigate = useNavigate();
+
+  const routeChangeThankYou = () => {
+    let path = `/thankyou`;
+    navigate(path);
   };
 
+  const chooseRating = (rating) => {
+    setChildRating([...childRating, rating]);
+    console.log(childRating);
+  };
+  // const [singleVote, setSingleVote] = useState({
+  //   gordId: "",
+  //   rating: "",
+  // });
   const getTheGords = async () => {
     try {
       const response = await getGords();
@@ -27,7 +36,6 @@ const Gord = () => {
       console.error(err);
     }
   };
-
   const handleVote = (response) => {
     fetch("/api/gords", {
       method: "POST",
@@ -40,21 +48,33 @@ const Gord = () => {
       return;
     });
   };
-
-  // remoaved async from this
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    // let gordId;
+    // let rating;
+    // let allVotesArray = [];
+    // const allVotes = document.querySelectorAll(".gordRating");
+    // allVotes.forEach((vote) => {
+    //   gordId = vote.attributes.dataid.value;
+    //   rating = vote.value;
+    //   console.log(rating);
+    //   allVotesArray.push({ gordId, rating });
+    // });
+    // console.log(allVotesArray);
+    // console.log(allVotesArray[0]);
     childRating.forEach((el) => {
       const response = el;
       handleVote(response);
     });
-    setSubmited(true);
-    console.log("vote submited");
+    routeChangeThankYou();
   };
-
   useEffect(() => {
     getTheGords();
   }, []);
-
+  useEffect(() => {
+    getTheGords();
+  }, [isOpen]);
+  // the second parameter is an array - and whenever these values change ,the render will reun
+  // an empty array is equivelent to [on mount]
   return (
     <div>
       <div className="container">
@@ -67,11 +87,7 @@ const Gord = () => {
                 alt="gord"
               ></img>
               <p className="text-center gord-name">{gord.name}</p>
-              <Rating
-                gordId={gord._id}
-                chooseRating={chooseRating}
-                submited={submited}
-              />
+              <Rating gordId={gord._id} chooseRating={chooseRating} />
             </div>
           ))}
           <div className="d-flex w-100 justify-content-end">
