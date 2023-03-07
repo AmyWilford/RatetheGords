@@ -4,6 +4,9 @@ import { getGords } from "../utils/API";
 import Rating from "./Rating";
 import "./styles.css";
 
+const pageContainer = {
+  paddingTop: "15rem",
+};
 const gordContainer = {
   display: "flex",
   flexDirection: "column",
@@ -14,7 +17,7 @@ const gordContainer = {
 
 const gordImage = {
   borderRadius: "50%",
-  maxWidth: "200px",
+  maxWidth: "250px",
 };
 
 const Gord = ({ isOpen }) => {
@@ -75,26 +78,24 @@ const Gord = ({ isOpen }) => {
   }, []);
 
   return (
-    <div>
-      <div className="container">
-        <div className="row d-flex">
-          {allGords.map((gord) => (
-            <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
-              <img
-                style={gordImage}
-                src={gord.img}
-                className="img-fluid gord-img"
-                alt="gord"
-              ></img>
-              <p className="text-center gord-name">{gord.name}</p>
-              <Rating gordId={gord._id} chooseRating={chooseRating} />
-            </div>
-          ))}
-          <div className="d-flex w-100 justify-content-end">
-            <button type="submit" onClick={handleSubmit}>
-              submit
-            </button>
+    <div className="container">
+      <div style={pageContainer} className="row d-flex">
+        {allGords.map((gord) => (
+          <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
+            <img
+              style={gordImage}
+              src={gord.img}
+              className="img-fluid gord-img"
+              alt="gord"
+            ></img>
+            <p className="text-center gord-name">{gord.name}</p>
+            <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
+        ))}
+        <div className="d-flex w-100 justify-content-end">
+          <button type="submit" onClick={handleSubmit}>
+            submit
+          </button>
         </div>
       </div>
     </div>

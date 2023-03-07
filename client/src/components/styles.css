@@ -1,11 +1,10 @@
 h1 {
   font-family: 'Londrina Outline', cursive;
-  padding: 4rem 0rem;
-  font-size: 6rem;
+  padding: 3rem 0rem;
+  font-size: 5rem;
   color: white;
   text-transform: uppercase;
   font-weight: bold;
-
 }
 input[type="radio"]{
   display: none;
@@ -56,4 +55,13 @@ button:hover{
 button:hover:after {
   opacity: 1;
   right: 20px;
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 3rem;
+  }
+  button {
+    font-size: 14px
+  }
 }

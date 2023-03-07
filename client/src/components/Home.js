@@ -3,8 +3,11 @@ import Gord from "./Gord";
 import Modal from "./Modal";
 
 const headerStyles = {
-  backgroundColor: '#ED452B',
-  color: 'white'
+  backgroundColor: "#ED452B",
+  color: "white",
+  position: "fixed",
+  width: "100%",
+  zIndex: 2,
 };
 
 export default function Home() {
