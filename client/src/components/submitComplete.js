@@ -37,7 +37,7 @@ const SubmitComplete = () => {
     getVotes();
   }, []);
   return (
-    <>
+    <div>
       <div>Thanks for submitting your vote</div>
       <button onClick={() => routeChangeGords()}>go back to gords</button>;
       <div>
@@ -48,7 +48,7 @@ const SubmitComplete = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 export default SubmitComplete;
