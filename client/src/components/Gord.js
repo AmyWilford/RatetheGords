@@ -5,19 +5,17 @@ import Rating from "./Rating";
 import "./styles.css";
 
 const gordContainer = {
-display: 'flex', 
-flexDirection: 'column', 
-alignItems: 'center',
-textTransform: 'uppercase',
-fontWeight: 'bold'
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textTransform: "uppercase",
+  fontWeight: "bold",
 };
 
 const gordImage = {
   borderRadius: "50%",
   maxWidth: "200px",
 };
-
-
 
 const Gord = ({ isOpen }) => {
   const [allGords, setAllGords] = useState([]);
@@ -60,19 +58,22 @@ const Gord = ({ isOpen }) => {
       return;
     });
   };
+
   const handleSubmit = async (event) => {
-    childRating.forEach((el) => {
-      const response = el;
-      handleVote(response);
-    });
-    routeChangeThankYou();
+    if (childRating.length !== 8) {
+      alert("all gords must be rated");
+    } else {
+      childRating.forEach((el) => {
+        const response = el;
+        handleVote(response);
+      });
+      routeChangeThankYou();
+    }
   };
   useEffect(() => {
     getTheGords();
   }, []);
-  useEffect(() => {
-    getTheGords();
-  }, [isOpen]);
+
   return (
     <div>
       <div className="container">

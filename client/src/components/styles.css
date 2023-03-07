@@ -18,18 +18,18 @@ input[type="radio"]{
 
 
 button {
-  border-radius: 25px;
+  border-radius: 10px;
   background-color: white;
   font-weight: bold;
   border: 2px solid #ED452B;
   color: #ED452B;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px;
   width: 220px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 3rem;
+  margin: 1rem;
   cursor: pointer;
   display: inline-block;
   position: relative;
