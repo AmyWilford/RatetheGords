@@ -1,14 +1,13 @@
 // WORKING VOTING REFERENCE
 
 import React, { useState, useEffect } from "react";
-import { getGords, createVote, getSingleGord } from "../utils/API";
+import { getGords } from "../utils/API";
 import Rating from "./Rating";
 import "./styles.css";
 // export default function Gord() {
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
-  const [myData, setMyData] = useState([]);
 
   const chooseRating = (rating) => {
     setChildRating([...childRating, rating]);

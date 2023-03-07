@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { RiCloseLine } from "react-icons/ri";
-import { getGords, getAllVotes } from "../utils/API";
+import { getAllVotes } from "../utils/API";
 import "./styles.css";
 
 const MODAL_STYLES = {
@@ -24,7 +24,6 @@ const OVERLAY_STLYE = {
 };
 
 const Modal = ({ open, children, onClose }) => {
-  // const [allGords, setAllGords] = useState([]);
   const [allVotes, setAllVotes] = useState([]);
 
   const getVotes = async () => {
@@ -35,20 +34,22 @@ const Modal = ({ open, children, onClose }) => {
         throw new Error("could not fetch the gords");
       }
       let data = await response.json();
-      setAllVotes(data);
-      console.log(allVotes);
+      sortData(data);
     } catch (err) {
       console.error(err);
     }
   };
 
-  console.log(allVotes.sort((a,b) => a.vote_sum - b.vote_sum));
-
-  
+  const sortData = (data) => {
+    let sortedData = data.sort((a, b) => a.vote_sum - b.vote_sum).reverse();
+    console.log(sortedData);
+    setAllVotes(sortedData);
+    console.log(allVotes);
+  };
 
   useEffect(() => {
     getVotes();
-  }, []);
+  }, [open]);
 
   if (!open) return null;
   return (
@@ -57,9 +58,12 @@ const Modal = ({ open, children, onClose }) => {
       <div style={MODAL_STYLES}>
         <RiCloseLine onClick={onClose} />
         {children}
-        {allVotes.sort((vote) => {
-          console.log(vote.name + ": " + vote.vote_sum);
-        })}
+        {allVotes.map((vote) => (
+          <div key={vote._id}>
+            <span>{vote.name}:</span>
+            <span>{vote.vote_sum}</span>
+          </div>
+        ))}
       </div>
     </>
   );
