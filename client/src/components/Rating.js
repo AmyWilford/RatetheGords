@@ -5,10 +5,12 @@ import "./styles.css";
 const Rating = ({ gordId, chooseRating, submited }) => {
   const [assignedRating, setAssignedRating] = useState(null);
   const [hover, setHover] = useState(null);
-
+  
   useEffect(() => {
     setAssignedRating(null);
+    // setHover(null)
   }, [submited]);
+
   return (
     <div className="text-center">
       {[...Array(5)].map((leaf, i) => {

@@ -7,16 +7,13 @@ import "./styles.css";
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
-  const [submited, setSubmitted] = useState(false);
+  const [submited, setSubmited] = useState(false);
 
   const chooseRating = (rating) => {
+    setSubmited(false);
     setChildRating([...childRating, rating]);
-    console.log(childRating);
   };
 
-  const clearRating = (value) => {
-    value = null;
-  };
   const getTheGords = async () => {
     try {
       const response = await getGords();
@@ -50,7 +47,8 @@ const Gord = () => {
       const response = el;
       handleVote(response);
     });
-    setSubmitted(true);
+    setSubmited(true);
+    console.log("vote submited");
   };
 
   useEffect(() => {
