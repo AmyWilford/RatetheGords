@@ -8,7 +8,6 @@ db.once('open', async () => {
 
 
   await Gord.collection.insertMany(gordData);
-//   const gords = await Gord.insertMany(gordData);
 
   console.log('all done!');
   console.table(gordData);

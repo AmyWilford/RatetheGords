@@ -53,7 +53,7 @@ const Modal = ({ open, children, onClose }) => {
 
   if (!open) return null;
   return (
-    <>
+    <div>
       <div style={overlayStyle}></div>
       <div style={modalStyle}>
         <RiCloseLine onClick={onClose} />
@@ -65,7 +65,7 @@ const Modal = ({ open, children, onClose }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

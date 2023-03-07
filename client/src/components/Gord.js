@@ -87,7 +87,7 @@ const Gord = ({ isOpen }) => {
               src={gord.img}
               className="img-fluid gord-img"
               alt="gord"
-            ></img>
+            />
             <p className="text-center gord-name">{gord.name}</p>
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
