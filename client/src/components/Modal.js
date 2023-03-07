@@ -3,7 +3,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { getAllVotes } from "../utils/API";
 import "./styles.css";
 
-const MODAL_STYLES = {
+const modalStyle = {
   position: "fixed",
   top: "50%",
   left: "50%",
@@ -13,7 +13,7 @@ const MODAL_STYLES = {
   color: "#000000",
   backgroundColor: "#F2f2f2",
 };
-const OVERLAY_STLYE = {
+const overlayStyle = {
   position: "fixed",
   top: 0,
   left: 0,
@@ -54,8 +54,8 @@ const Modal = ({ open, children, onClose }) => {
   if (!open) return null;
   return (
     <>
-      <div style={OVERLAY_STLYE}></div>
-      <div style={MODAL_STYLES}>
+      <div style={overlayStyle}></div>
+      <div style={modalStyle}>
         <RiCloseLine onClick={onClose} />
         {children}
         {allVotes.map((vote) => (

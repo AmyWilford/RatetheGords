@@ -3,6 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { getGords } from "../utils/API";
 import Rating from "./Rating";
 import "./styles.css";
+
+const gordContainer = {
+display: 'flex', 
+flexDirection: 'column', 
+alignItems: 'center',
+textTransform: 'uppercase',
+fontWeight: 'bold'
+};
+
+const gordImage = {
+  borderRadius: "50%",
+  maxWidth: "200px",
+};
+
+
+
 const Gord = ({ isOpen }) => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
@@ -60,10 +76,11 @@ const Gord = ({ isOpen }) => {
   return (
     <div>
       <div className="container">
-        <div className="row d-flex flex-wrap">
+        <div className="row d-flex">
           {allGords.map((gord) => (
-            <div key={gord._id} className="col-md-3 p-2">
+            <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
               <img
+                style={gordImage}
                 src={gord.img}
                 className="img-fluid gord-img"
                 alt="gord"

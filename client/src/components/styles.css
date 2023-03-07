@@ -11,23 +11,11 @@ input[type="radio"]{
   display: none;
 }
 
-.star {
+/* .star {
   cursor: pointer;
   transition: color 200ms;
-}
+} */
 
-.gord-img {
-  border-radius:  50%; 
-}
-.gord-name {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.custom-bg{
-  background-color: #ED452B;
-  color: white
-}
 
 button {
   border-radius: 25px;
@@ -42,18 +30,19 @@ button {
   transition: all 0.5s;
   cursor: pointer;
   margin: 3rem;
-}
-button{
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
+button:focus{
+  outline: none;
+}
 button:after {
   content: '»';
   position: absolute;
   opacity: 0;  
-  top: 14px;
+  /* top: 14px; */
   right: -20px;
   transition: 0.5s;
 }
