@@ -14,9 +14,9 @@ router.route("/api/gords/:id").get(getSingleGord);
 
 router.route("/api/tally").get(getAllVotes);
 
-// router.use((req, res) => {
-//     res.sendFile(path.join(dirname, '../../client/build/index.html'));
-//   });
+router.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+});
 
 router.use((req, res) => {
   res.sendFile(path.join(dirname, "../../client/build/index.html"));

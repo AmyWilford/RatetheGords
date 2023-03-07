@@ -39,7 +39,7 @@ const SubmitComplete = () => {
   return (
     <>
       <div>Thanks for submitting your vote</div>
-      <button onClick={() => routeChangeGords()}></button>;
+      <button onClick={() => routeChangeGords()}>go back to gords</button>;
       <div>
         {allVotes.map((vote) => (
           <div key={vote._id}>

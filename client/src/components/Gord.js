@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { getGords } from "../utils/API";
 import Rating from "./Rating";
 import "./styles.css";
-// export default function Gord() {
 const Gord = ({ isOpen }) => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
@@ -19,10 +18,7 @@ const Gord = ({ isOpen }) => {
     setChildRating([...childRating, rating]);
     console.log(childRating);
   };
-  // const [singleVote, setSingleVote] = useState({
-  //   gordId: "",
-  //   rating: "",
-  // });
+
   const getTheGords = async () => {
     try {
       const response = await getGords();
@@ -49,18 +45,6 @@ const Gord = ({ isOpen }) => {
     });
   };
   const handleSubmit = async (event) => {
-    // let gordId;
-    // let rating;
-    // let allVotesArray = [];
-    // const allVotes = document.querySelectorAll(".gordRating");
-    // allVotes.forEach((vote) => {
-    //   gordId = vote.attributes.dataid.value;
-    //   rating = vote.value;
-    //   console.log(rating);
-    //   allVotesArray.push({ gordId, rating });
-    // });
-    // console.log(allVotesArray);
-    // console.log(allVotesArray[0]);
     childRating.forEach((el) => {
       const response = el;
       handleVote(response);
@@ -73,8 +57,6 @@ const Gord = ({ isOpen }) => {
   useEffect(() => {
     getTheGords();
   }, [isOpen]);
-  // the second parameter is an array - and whenever these values change ,the render will reun
-  // an empty array is equivelent to [on mount]
   return (
     <div>
       <div className="container">
