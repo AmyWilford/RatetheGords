@@ -1,7 +1,5 @@
 const { ObjectId } = require("mongoose").Types;
-const { RiNpmjsFill } = require("react-icons/ri");
 const { Gord } = require("../models");
-const { db } = require("../models/Gord");
 
 // const totalGordVotes = (gordId) =>
 const totalRatingPerGord = async (gordId) =>
@@ -19,17 +17,10 @@ const totalRatingPerGord = async (gordId) =>
   ]);
 
 module.exports = {
-  // Get all the gords and their total score
-  // getAllGords(req, res) {
-  //   Gord.find()
-  //     .select("-__v")
-  //     .then((gords) => res.json(gords))
-  //     .catch((err) => res.status(500).json(err));
-  // },
   getAllGords(req, res) {
     Gord.aggregate(
       [{ $sample: { size: 8 } }],
-      
+
       (err, result) => {
         if (err) {
           res.status(500).send(err);

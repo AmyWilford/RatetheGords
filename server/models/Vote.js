@@ -1,6 +1,5 @@
 // Should this be a model or a type?
 const { Schema , Types } = require("mongoose");
-// const Gord = require("./Gord");
 
 const voteSchema = new Schema(
   {
@@ -11,7 +10,6 @@ const voteSchema = new Schema(
     rating: {
       type: Number,
       require: true,
-      // default: 0,
       min: 1,
       max: 5,
     },
