@@ -20,6 +20,7 @@ const Rating = ({ gordId, chooseRating }) => {
               value={rating}
               onClick={() => {
                 setAssignedRating(rating);
+                console.log(rating);
                 chooseRating({ gordId, rating });
               }}
             />

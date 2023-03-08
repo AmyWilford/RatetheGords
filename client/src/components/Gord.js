@@ -34,7 +34,6 @@ const alertStyle = {
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
-  const [alertDisplay, setAlertDisplay] = useState(false);
 
   const navigate = useNavigate();
 
@@ -44,6 +43,17 @@ const Gord = () => {
   };
 
   const chooseRating = (rating) => {
+    console.log(rating.gordId);
+    childRating.forEach((el) => {
+      console.log(el.gordId);
+      if (el.gordId === rating.gordId) {
+        el = rating;
+        console.log(el);
+        console.log(rating);
+        childRating.pop();
+        console.log(childRating.indexOf(rating));
+      }
+    });
     setChildRating([...childRating, rating]);
     console.log(childRating);
   };
@@ -92,7 +102,10 @@ const Gord = () => {
 
   return (
     <div className="mb-4">
-      <div style={pageContainer} className="row d-flex justify-content-center flex-wrap">
+      <div
+        style={pageContainer}
+        className="row d-flex justify-content-center flex-wrap"
+      >
         {allGords.map((gord) => (
           <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
             <img style={gordImage} src={gord.img} alt="gord" />
