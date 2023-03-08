@@ -91,8 +91,8 @@ const Gord = () => {
   }, []);
 
   return (
-    <div className=" mb-4">
-      <div style={pageContainer} className="row d-flex flex-wrap">
+    <div className="mb-4">
+      <div style={pageContainer} className="row d-flex justify-content-center flex-wrap">
         {allGords.map((gord) => (
           <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
             <img style={gordImage} src={gord.img} alt="gord" />
