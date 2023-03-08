@@ -4,7 +4,7 @@ const { Gord } = require('../models');
 db.once('open', async () => {
   await Gord.deleteMany();
 
-  const gords = await Gord.insertMany([
+  const gordons = await Gord.insertMany([
     {
       name: "Gord Downie",
       img: "./assets/gord-downie.png",
