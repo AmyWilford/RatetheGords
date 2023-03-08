@@ -13,12 +13,11 @@ const gordContainer = {
   alignItems: "center",
   textTransform: "uppercase",
   fontWeight: "bold",
-  margin: ".25rem",
 };
 
 const gordImage = {
   borderRadius: "50%",
-  maxWidth: "200px",
+  maxWidth: "175px",
 };
 
 const alertStyle = {
@@ -29,6 +28,11 @@ const alertStyle = {
   backgroundColor: "#ED452B",
   color: "white",
   padding: ".5rem 0rem",
+};
+
+const alertConfirmationStyle = {
+  color: "white",
+  textDecoration: "underline",
 };
 
 const Gord = () => {
@@ -43,15 +47,10 @@ const Gord = () => {
   };
 
   const chooseRating = (rating) => {
-    console.log(rating.gordId);
     childRating.forEach((el) => {
-      console.log(el.gordId);
       if (el.gordId === rating.gordId) {
-        el = rating;
-        console.log(el);
-        console.log(rating);
+        el.rating = rating.rating;
         childRating.pop();
-        console.log(childRating.indexOf(rating));
       }
     });
     setChildRating([...childRating, rating]);
@@ -85,6 +84,7 @@ const Gord = () => {
   };
 
   const handleSubmit = async (event) => {
+    console.log(childRating);
     if (childRating.length !== 8) {
       document.getElementById("alert").style.display = "block";
       document.getElementById("submitButton").style.display = "none";
@@ -96,6 +96,7 @@ const Gord = () => {
       routeChangeThankYou();
     }
   };
+
   useEffect(() => {
     getTheGords();
   }, []);
@@ -107,23 +108,27 @@ const Gord = () => {
         className="row d-flex justify-content-center flex-wrap"
       >
         {allGords.map((gord) => (
-          <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
+          <div key={gord._id} style={gordContainer} className="col-md-3 p-1">
             <img style={gordImage} src={gord.img} alt="gord" />
             <p className="text-center gord-name">{gord.name}</p>
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
         ))}
         <div id="alert" style={alertStyle}>
-          All Gords need a ranking... <br></br>
-          It's the Canadian thing to do, eh?
+          <div>
+            All Gords need a ranking... <br></br>
+            It's the Canadian thing to do, eh?
+          </div>
           <button
-            class="btn btn-link"
+            style={alertConfirmationStyle}
+            
+            class="btn btn-link hoverStye"
             onClick={() => {
               document.getElementById("alert").style.display = "none";
               document.getElementById("submitButton").style.display = "block";
             }}
           >
-            ok
+            Finish Ratings
           </button>
         </div>
         <div className="d-flex w-100 submitbutton-row">

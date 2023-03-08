@@ -62,6 +62,27 @@ table, td, th, tr {
   border: none !important;
 }
 
+.hoverStye:hover {
+  color: pink !important;
+}
+.closeContainer{
+  background-color: #ED452B;
+  padding-top: 1rem;
+}
+.closeIcon {
+  background-color: white;
+  border-radius: 50%;
+  color: black;
+  font-size: 1.3rem;
+  opacity: .5;
+}
+.closeIcon:hover{
+opacity: 1;
+  cursor: pointer;
+
+}
+
+
 /* Modal Table Styles */
 td, th{ 
   padding: .5rem 1rem;

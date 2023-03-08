@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCanadianMapleLeaf } from "react-icons/fa";
 import "./styles.css";
 
 const Rating = ({ gordId, chooseRating }) => {
   const [assignedRating, setAssignedRating] = useState(null);
   const [hover, setHover] = useState(null);
+
 
   return (
     <div className="text-center">

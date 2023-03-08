@@ -9,8 +9,8 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  padding: "10px",
   zIndex: 1000,
+  margin: "20xp 0px",
   color: "#000000",
   backgroundColor: "#F2f2f2",
   opacity: 0.9,
@@ -62,12 +62,17 @@ const Modal = ({ open, children, onClose }) => {
     <div>
       <div style={overlayStyle}></div>
       <div style={modalStyle}>
-        <div className="d-flex justify-content-end pb-3">
-          <RiCloseLine onClick={onClose} />
+        <div className="d-flex justify-content-end pb-3 pr-2 closeContainer">
+          <RiCloseLine class="closeIcon" onClick={onClose} />
         </div>
         {children}
         <table>
           <tbody>
+            <tr>
+              <th colspan="3" className="text-center">
+                Gord Power Rankings
+              </th>
+            </tr>
             <tr>
               <th>RANKING</th>
               <th>GORD</th>
