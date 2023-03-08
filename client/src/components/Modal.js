@@ -14,7 +14,7 @@ const modalStyle = {
   color: "#000000",
   backgroundColor: "#F2f2f2",
   opacity: 0.9,
-  height: 'auto',
+  height: "auto",
   maxHeight: "80vh",
   overflow: "auto",
   fontSize: "14px",
@@ -29,10 +29,9 @@ const overlayStyle = {
   zIndex: 1000,
 };
 
-const powerRankingsStyle = {};
-
 const Modal = ({ open, children, onClose }) => {
   const [allVotes, setAllVotes] = useState([]);
+  let ranking = 0;
 
   const getVotes = async () => {
     try {
@@ -47,7 +46,6 @@ const Modal = ({ open, children, onClose }) => {
       console.error(err);
     }
   };
-  let ranking = 0;
   const sortData = (data) => {
     let sortedData = data.sort((a, b) => a.vote_sum - b.vote_sum).reverse();
     console.log(sortedData);

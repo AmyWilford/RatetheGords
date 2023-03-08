@@ -13,7 +13,7 @@ const gordContainer = {
   alignItems: "center",
   textTransform: "uppercase",
   fontWeight: "bold",
-  margin: ".5rem",
+  margin: ".25rem",
 };
 
 const gordImage = {
@@ -22,7 +22,13 @@ const gordImage = {
 };
 
 const alertStyle = {
+  width: "100%",
   display: "none",
+  textAlign: "center",
+  fontSize: "18px",
+  backgroundColor: "#ED452B",
+  color: "white",
+  padding: ".5rem 0rem",
 };
 
 const Gord = () => {
@@ -85,7 +91,7 @@ const Gord = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className=" mb-4">
       <div style={pageContainer} className="row d-flex flex-wrap">
         {allGords.map((gord) => (
           <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
@@ -95,8 +101,10 @@ const Gord = () => {
           </div>
         ))}
         <div id="alert" style={alertStyle}>
-          all gords need a rating
+          All Gords need a ranking... <br></br>
+          It's the Canadian thing to do, eh?
           <button
+            class="btn btn-link"
             onClick={() => {
               document.getElementById("alert").style.display = "none";
               document.getElementById("submitButton").style.display = "block";
@@ -106,8 +114,13 @@ const Gord = () => {
           </button>
         </div>
         <div className="d-flex w-100 submitbutton-row">
-          <button type="submit" id="submitButton" onClick={handleSubmit}>
-            submit
+          <button
+            type="submit"
+            id="submitButton"
+            class="custom-button"
+            onClick={handleSubmit}
+          >
+            submit ratings
           </button>
         </div>
       </div>

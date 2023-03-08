@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllVotes } from "../utils/API";
 
+const submitDivStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
 const SubmitComplete = () => {
   const [allVotes, setAllVotes] = useState([]);
+  let ranking = 0;
 
   const navigate = useNavigate();
 
@@ -37,17 +43,31 @@ const SubmitComplete = () => {
     getVotes();
   }, []);
   return (
-    <div>
+    <div style={submitDivStyle}>
       <div>Thanks for submitting your vote</div>
-      <button onClick={() => routeChangeGords()}>go back to gords</button>;
-      <div>
-        {allVotes.map((vote) => (
-          <div key={vote._id}>
-            <span>{vote.name}:</span>
-            <span>{vote.vote_sum}</span>
-          </div>
-        ))}
-      </div>
+      <div>See what Canada has to say</div>
+
+      <table>
+          <tbody>
+            <tr>
+              <th>RANKING</th>
+              <th>GORD</th>
+              <th>TOTAL VOTES</th>
+            </tr>
+            {allVotes.map((vote) => (
+              <tr key={vote._id}>
+                <td className="text-center">{++ranking}</td>
+                <td>
+                  {vote.name} <br></br>
+                </td>
+                <td>{vote.vote_sum}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button class="custom-button" onClick={() => routeChangeGords()}>
+        go back to gords
+      </button>
     </div>
   );
 };

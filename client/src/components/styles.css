@@ -10,14 +10,14 @@ input[type="radio"]{
   display: none;
 }
 .powerrankings-bar, .submitbutton-row{
-  justify-content: end;
+  justify-content: center;
 }
 .mapleleaf {
   cursor: pointer;
   transition: color 100ms;
 }
 
-button {
+button.custom-button {
   border-radius: 10px;
   background-color: white;
   font-weight: bold;
@@ -36,10 +36,10 @@ button {
   transition: 0.5s;
 }
 
-button:focus{
+button.custom-button:focus{
   outline: none;
 }
-button:after {
+button.custom-button:after {
   content: '»';
   position: absolute;
   opacity: 0;  
@@ -47,14 +47,14 @@ button:after {
   right: -20px;
   transition: 0.5s;
 }
-button:hover{
+button.custom-button:hover{
   padding-right: 24px;
   padding-left:8px;
   background-color: #ED452B;
   color: white;
 }
 
-button:hover:after {
+button.custom-buttontton:hover:after {
   opacity: 1;
   right: 20px;
 }
@@ -80,7 +80,7 @@ td, th{
   table > tbody > tr:nth-child(2) > td:nth-child(2)::after {
 
   content: ' TOP GORD!';
-  font-size: 12px;
+  font-size: 10px;
   color: #ED452B
 }
 
@@ -96,7 +96,5 @@ tr:hover {
  button {  
   padding: 5px;
  }
- .powerrankings-bar, .submitbutton-row{
-  justify-content: center;
-}
+
 }
