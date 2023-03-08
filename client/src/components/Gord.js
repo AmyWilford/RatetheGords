@@ -21,9 +21,14 @@ const gordImage = {
   maxWidth: "200px",
 };
 
+const alertStyle = {
+  display: "none",
+};
+
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
+  const [alertDisplay, setAlertDisplay] = useState(false);
 
   const navigate = useNavigate();
 
@@ -65,7 +70,8 @@ const Gord = () => {
 
   const handleSubmit = async (event) => {
     if (childRating.length !== 8) {
-      alert("all gords must be rated");
+      document.getElementById("alert").style.display = "block";
+      document.getElementById("submitButton").style.display = "none";
     } else {
       childRating.forEach((el) => {
         const response = el;
@@ -88,8 +94,19 @@ const Gord = () => {
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
         ))}
+        <div id="alert" style={alertStyle}>
+          all gords need a rating
+          <button
+            onClick={() => {
+              document.getElementById("alert").style.display = "none";
+              document.getElementById("submitButton").style.display = "block";
+            }}
+          >
+            ok
+          </button>
+        </div>
         <div className="d-flex w-100 submitbutton-row">
-          <button type="submit" onClick={handleSubmit}>
+          <button type="submit" id="submitButton" onClick={handleSubmit}>
             submit
           </button>
         </div>
