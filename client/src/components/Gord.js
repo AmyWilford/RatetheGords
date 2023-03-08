@@ -13,14 +13,15 @@ const gordContainer = {
   alignItems: "center",
   textTransform: "uppercase",
   fontWeight: "bold",
+  margin: ".5rem",
 };
 
 const gordImage = {
   borderRadius: "50%",
-  maxWidth: "250px",
+  maxWidth: "200px",
 };
 
-const Gord = ({ isOpen }) => {
+const Gord = () => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
 
@@ -79,15 +80,10 @@ const Gord = ({ isOpen }) => {
 
   return (
     <div className="container">
-      <div style={pageContainer} className="row d-flex">
+      <div style={pageContainer} className="row d-flex flex-wrap">
         {allGords.map((gord) => (
           <div key={gord._id} style={gordContainer} className="col-md-3 p-2">
-            <img
-              style={gordImage}
-              src={gord.img}
-              className="img-fluid gord-img"
-              alt="gord"
-            />
+            <img style={gordImage} src={gord.img} alt="gord" />
             <p className="text-center gord-name">{gord.name}</p>
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
