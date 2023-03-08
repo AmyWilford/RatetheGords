@@ -60,7 +60,6 @@ const Gord = () => {
   const getTheGords = async () => {
     try {
       const response = await getGords();
-      console.log(response);
       if (!response.ok) {
         throw new Error("could not fetch the gords");
       }
@@ -96,7 +95,6 @@ const Gord = () => {
       routeChangeThankYou();
     }
   };
-
   useEffect(() => {
     getTheGords();
   }, []);
@@ -121,8 +119,7 @@ const Gord = () => {
           </div>
           <button
             style={alertConfirmationStyle}
-            
-            class="btn btn-link hoverStye"
+            className="btn btn-link hoverStye"
             onClick={() => {
               document.getElementById("alert").style.display = "none";
               document.getElementById("submitButton").style.display = "block";
@@ -135,7 +132,7 @@ const Gord = () => {
           <button
             type="submit"
             id="submitButton"
-            class="custom-button"
+            className="custom-button"
             onClick={handleSubmit}
           >
             submit ratings

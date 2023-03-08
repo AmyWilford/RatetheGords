@@ -48,9 +48,7 @@ const Modal = ({ open, children, onClose }) => {
   };
   const sortData = (data) => {
     let sortedData = data.sort((a, b) => a.vote_sum - b.vote_sum).reverse();
-    console.log(sortedData);
     setAllVotes(sortedData);
-    console.log(allVotes);
   };
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const Modal = ({ open, children, onClose }) => {
       <div style={overlayStyle}></div>
       <div style={modalStyle}>
         <div className="d-flex justify-content-end pb-3 pr-2 closeContainer">
-          <RiCloseLine class="closeIcon" onClick={onClose} />
+          <RiCloseLine className="closeIcon" onClick={onClose} />
         </div>
         {children}
         <table>

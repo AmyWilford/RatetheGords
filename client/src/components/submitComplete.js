@@ -77,7 +77,7 @@ const SubmitComplete = () => {
           ))}
         </tbody>
       </table>
-      <button class="custom-button" onClick={() => routeChangeGords()}>
+      <button className="custom-button" onClick={() => routeChangeGords()}>
         rate the gords again
       </button>
     </div>
