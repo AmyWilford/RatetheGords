@@ -88,7 +88,7 @@ const Gord = () => {
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
         ))}
-        <div className="d-flex w-100 justify-content-end">
+        <div className="d-flex w-100 submitbutton-row">
           <button type="submit" onClick={handleSubmit}>
             submit
           </button>

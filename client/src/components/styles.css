@@ -9,7 +9,9 @@ h1 {
 input[type="radio"]{
   display: none;
 }
-
+.powerrankings-bar, .submitbutton-row{
+  justify-content: end;
+}
 .mapleleaf {
   cursor: pointer;
   transition: color 100ms;
@@ -22,7 +24,7 @@ button {
   border: 2px solid #ED452B;
   color: #ED452B;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px;
   width: 220px;
   transition: all 0.5s;
@@ -91,7 +93,10 @@ tr:hover {
   h1 {
     font-size: 3rem;
   }
-  button {
-    font-size: 14px
-  }
+ button {  
+  padding: 5px;
+ }
+ .powerrankings-bar, .submitbutton-row{
+  justify-content: center;
+}
 }
