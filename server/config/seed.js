@@ -1,7 +1,7 @@
-const db = require("./connection");
-const { Gord } = require("../models");
+const db = require('./connection');
+const { Gord } = require('../models');
 
-db.once("open", async () => {
+db.once('open', async () => {
   await Gord.deleteMany();
 
   const gords = await Gord.insertMany([
