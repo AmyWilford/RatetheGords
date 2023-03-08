@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllVotes } from "../utils/API";
+import { FaCanadianMapleLeaf } from "react-icons/fa";
 
 const submitDivStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  margin: "1rem 0rem",
+  textAlign: "center",
+};
+
+const iconStyle = {
+  color: "ED452B",
 };
 const SubmitComplete = () => {
   const [allVotes, setAllVotes] = useState([]);
@@ -44,29 +51,34 @@ const SubmitComplete = () => {
   }, []);
   return (
     <div style={submitDivStyle}>
-      <div>Thanks for submitting your vote</div>
-      <div>See what Canada has to say</div>
+      <div className="my-3">
+        <h4>
+          Thank you for rating <br></br>Canada's Gords
+        </h4>
+        <FaCanadianMapleLeaf style={iconStyle} size={30} />
+      </div>
+      <div className="mb-3">See what the rest of the Country has to say</div>
 
       <table>
-          <tbody>
-            <tr>
-              <th>RANKING</th>
-              <th>GORD</th>
-              <th>TOTAL VOTES</th>
+        <tbody>
+          <tr>
+            <th>RANKING</th>
+            <th>GORD</th>
+            <th>TOTAL VOTES</th>
+          </tr>
+          {allVotes.map((vote) => (
+            <tr key={vote._id}>
+              <td className="text-center">{++ranking}</td>
+              <td>
+                {vote.name} <br></br>
+              </td>
+              <td>{vote.vote_sum}</td>
             </tr>
-            {allVotes.map((vote) => (
-              <tr key={vote._id}>
-                <td className="text-center">{++ranking}</td>
-                <td>
-                  {vote.name} <br></br>
-                </td>
-                <td>{vote.vote_sum}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button class="custom-button" onClick={() => routeChangeGords()}>
-        go back to gords
+          ))}
+        </tbody>
+      </table>
+      <button class="custom-button" onClick={() => routeChangeGords()}>
+        rank the gords again
       </button>
     </div>
   );
