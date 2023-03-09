@@ -18,6 +18,9 @@ const modalStyle = {
   maxHeight: "80vh",
   overflow: "auto",
   fontSize: "14px",
+  width: "50%",
+  display: "flex",
+  flexDirection: "column",
 };
 const overlayStyle = {
   position: "fixed",
@@ -27,6 +30,17 @@ const overlayStyle = {
   bottom: 0,
   backgroundColor: "rgba(0,0,0, 0.7)",
   zIndex: 1000,
+};
+
+const styledTopGord = {
+  borderRadius: "50%",
+  width: "85px",
+};
+
+const gordImage = {
+  borderRadius: "50%",
+  width: "25px",
+  marginRight: ".5rem",
 };
 
 const Modal = ({ open, children, onClose }) => {
@@ -64,25 +78,30 @@ const Modal = ({ open, children, onClose }) => {
           <RiCloseLine className="closeIcon" onClick={onClose} />
         </div>
         {children}
+        <div className="d-flex flex-column align-items-center my-3">
+          <h5>Canada's Top Gord is...</h5>
+          <img style={styledTopGord} src={allVotes[0].img}></img>
+          <h5>{allVotes[0].name}</h5>
+        </div>
         <table>
           <tbody>
             <tr>
-              <th colspan="3" className="text-center">
+              <th colSpan="3" className="text-center">
                 Gord Power Rankings
               </th>
             </tr>
             <tr>
-              <th>RANKING</th>
+              <th className="text-center">RANK</th>
               <th>GORD</th>
-              <th>TOTAL VOTES</th>
             </tr>
-            {allVotes.map((vote) => (
+            {allVotes.map((vote, index) => (
               <tr key={vote._id}>
                 <td className="text-center">{++ranking}</td>
                 <td>
-                  {vote.name} <br></br>
+                  {" "}
+                  <img style={gordImage} src={vote.img}></img>
+                  {vote.name}
                 </td>
-                <td>{vote.vote_sum}</td>
               </tr>
             ))}
           </tbody>
