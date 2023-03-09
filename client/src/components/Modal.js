@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { RiCloseLine } from "react-icons/ri";
 import { getAllVotes } from "../utils/API";
-
 import "./styles.css";
 
 const modalStyle = {
@@ -14,7 +13,7 @@ const modalStyle = {
   color: "#000000",
   backgroundColor: "#F2f2f2",
   height: "auto",
-  maxHeight: "80vh",
+  maxHeight: "90vh",
   overflow: "auto",
   fontSize: "14px",
   display: "flex",
@@ -96,7 +95,6 @@ const Modal = ({ open, children, onClose }) => {
               <tr key={vote._id}>
                 <td className="text-center">{++ranking}</td>
                 <td>
-                  {" "}
                   <img style={gordImage} src={vote.img}></img>
                   {vote.name}
                 </td>

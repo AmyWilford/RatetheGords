@@ -101,12 +101,7 @@ td, th{
   table > tbody > tr:nth-child(2) > td:nth-child(2){
     white-space: pre-wrap;
   }
-  /* table > tbody > tr:nth-child(2) > td:nth-child(2)::after {
 
-  content: ' TOP GORD!';
-  font-size: 10px;
-  color: #ED452B
-} */
 
 tr:hover {
   background-color: lightgray;
