@@ -32,7 +32,6 @@ const iconStyle = {
   color: "white",
 };
 
-
 const SubmitComplete = () => {
   const [allVotes, setAllVotes] = useState([]);
   let ranking = 0;
@@ -81,7 +80,7 @@ const SubmitComplete = () => {
           return (
             <div
               key={votes._id}
-              className="d-flex flex-column align-items-center mb-3"
+              className="d-flex flex-column align-items-center mb-3 text-center"
             >
               <h5>Canada's Top Gord is...</h5>
               <img style={styledTopGord} src={votes.img}></img>
