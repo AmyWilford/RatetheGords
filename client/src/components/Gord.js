@@ -11,8 +11,6 @@ const gordContainer = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  textTransform: "uppercase",
-  fontWeight: "bold",
 };
 
 const gordImage = {
@@ -107,8 +105,11 @@ const Gord = () => {
       >
         {allGords.map((gord) => (
           <div key={gord._id} style={gordContainer} className="col-md-3 p-1">
-            <img style={gordImage} src={gord.img} alt="gord" />
-            <p className="text-center gord-name">{gord.name}</p>
+            <div className="imageContainer">
+              <img className="box" style={gordImage} src={gord.img} alt={gord.name} />
+              <div className="box overlay"><p>{gord.bio}</p></div>
+            </div>
+            <p className="text-center gord-name font-weight-bold text-uppercase">{gord.name}</p>
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
         ))}

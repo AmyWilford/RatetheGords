@@ -7,7 +7,7 @@ const headerStyles = {
   color: "white",
   position: "fixed",
   width: "100%",
-  zIndex: 2,
+  zIndex: 10,
 };
 
 export default function Home() {
