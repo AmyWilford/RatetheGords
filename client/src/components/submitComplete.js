@@ -46,7 +46,6 @@ const SubmitComplete = () => {
   const getVotes = async () => {
     try {
       const response = await getAllVotes();
-      console.log(response);
       if (!response.ok) {
         throw new Error("could not fetch the gords");
       }
@@ -59,7 +58,6 @@ const SubmitComplete = () => {
 
   const sortData = (data) => {
     let sortedData = data.sort((a, b) => a.vote_sum - b.vote_sum).reverse();
-    console.log(sortedData);
     setAllVotes(sortedData);
   };
 

@@ -27,14 +27,6 @@ gordSchema.virtual("voteCount").get(function () {
   return this.votes.length;
 });
 
-// gordSchema.virtual("voteTotal").get(function () {
-//   let totalVotes;
-//   console.log(this.votes[1].rating)  
-//     // console.log(this.votes[i].rating)
-//     return totalVotes += this.votes[i].rating;
-
-// });
-
 const Gord = model("gord", gordSchema);
 
 module.exports = Gord;

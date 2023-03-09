@@ -47,7 +47,6 @@ const Modal = ({ open, children, onClose }) => {
   const getVotes = async () => {
     try {
       const response = await getAllVotes();
-      console.log(response);
       if (!response.ok) {
         throw new Error("could not fetch the gords");
       }

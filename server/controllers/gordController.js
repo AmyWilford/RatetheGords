@@ -54,7 +54,6 @@ module.exports = {
 
   // Get a single Gords and their total scores
   getSingleGord(req, res) {
-    console.log(req);
     Gord.findOne({ _id: req.params.id })
       .select("-__v")
       .then(async (gord) =>
@@ -69,8 +68,6 @@ module.exports = {
   },
 
   createVote(req, res) {
-    console.log(req.params);
-    console.log(req.body);
     Gord.findOneAndUpdate(
       { _id: req.body.gordId },
       { $addToSet: { votes: req.body } },

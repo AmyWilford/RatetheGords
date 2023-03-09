@@ -52,7 +52,6 @@ const Gord = () => {
       }
     });
     setChildRating([...childRating, rating]);
-    console.log(childRating);
   };
 
   const getTheGords = async () => {
@@ -81,7 +80,6 @@ const Gord = () => {
   };
 
   const handleSubmit = async (event) => {
-    console.log(childRating);
     if (childRating.length !== 8) {
       document.getElementById("alert").style.display = "block";
       document.getElementById("submitButton").style.display = "none";
