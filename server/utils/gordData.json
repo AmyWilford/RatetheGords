@@ -2,41 +2,41 @@
     {
         "name": "Gord Downie",
         "img": "./assets/gord-downie.png", 
-        "bio": "Singer-songwriter, activist, and frontman of Canaidan rock band The Tragically Hip, from Kingston Ontario." 
+        "bio": "Singer-songwriter, activist, and frontman of Canaidan rock band The Tragically Hip. Born in Kingston Ontario." 
     }, 
     {
         "name": "Gord Howe",
         "img": "./assets/gordie-howe.png", 
-        "bio": "Nicknamed Mr. Hockey, a professional ice hockey player from Floral, Saskatchewan. " 
+        "bio": "Nicknamed Mr. Hockey, a professional hockey player from Floral, Saskatchewan. " 
     }, 
     {
         "name": "Gord Lightfoot",
         "img": "./assets/gordon-lightfoot.png", 
-        "bio": "GordonLightfoot bio" 
+        "bio": "Canadian singer-songwriter credited with helping define the folk-pop sound of the 60's & 70's. Born in Orillia, Ontario." 
     }, 
     {
         "name": "Ranger Gord",
         "img": "./assets/ranger-gord.png", 
-        "bio": "Ranger Gord bio" 
+        "bio": "Nationally beloved Fire Ranger from the Red Green Show." 
     }, 
     {
         "name": "Gord Johnson",
         "img": "./assets/gordie-johnson.png", 
-        "bio": "Bio Gordie Johnson" 
+        "bio": "Canadian Musician and frontman of the band 'Big Sugar'. Born in Winnipeg, Manitoba." 
     }, 
     {
         "name": "Gord Martineau",
         "img": "./assets/gord-martineau.png", 
-        "bio": "Bio Gord Martineau" 
+        "bio": "Canadian television journalist. Born in Montreal, Québec." 
     }, 
     {
         "name": "Gordon",
         "img": "./assets/gordon.png", 
-        "bio": "Bio Gordon" 
+        "bio": "The debut album of Canadian band 'the Barenaked Ladies', featuring the hit track 'If I had $1000000'. " 
     },    {
         "name": "Gourd",
         "img": "./assets/gord.png", 
-        "bio": "Bio Gourd" 
+        "bio": "Canadians love squash. Don't you? " 
     }
 ]
 
