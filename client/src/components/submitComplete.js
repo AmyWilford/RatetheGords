@@ -88,7 +88,7 @@ const SubmitComplete = () => {
           );
         }
       })}
-      <table class="responsiveTable">
+      <table className="responsiveTable">
         <tbody>
           <tr>
             <th className="text-center">RANK</th>
