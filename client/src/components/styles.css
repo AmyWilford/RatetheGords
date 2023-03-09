@@ -86,6 +86,7 @@ opacity: 1;
 /* Modal Table Styles */
 .responsiveTable {
   width: 50%;
+  border: 2px solid red !important
 }
 td, th{ 
   padding: .5rem 1rem;
