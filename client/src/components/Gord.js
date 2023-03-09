@@ -100,7 +100,7 @@ const Gord = () => {
   }, []);
 
   return (
-    <div className="mb-4">
+    <div className="mb-5">
       <div
         style={pageContainer}
         className="row d-flex justify-content-center flex-wrap"

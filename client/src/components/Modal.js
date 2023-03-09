@@ -13,12 +13,10 @@ const modalStyle = {
   margin: "20xp 0px",
   color: "#000000",
   backgroundColor: "#F2f2f2",
-  opacity: 0.9,
   height: "auto",
   maxHeight: "80vh",
   overflow: "auto",
   fontSize: "14px",
-  width: "50%",
   display: "flex",
   flexDirection: "column",
 };
@@ -73,7 +71,7 @@ const Modal = ({ open, children, onClose }) => {
   return (
     <div>
       <div style={overlayStyle}></div>
-      <div style={modalStyle}>
+      <div style={modalStyle} className="responsiveTable">
         <div className="d-flex justify-content-end pb-3 pr-2 closeContainer">
           <RiCloseLine className="closeIcon" onClick={onClose} />
         </div>

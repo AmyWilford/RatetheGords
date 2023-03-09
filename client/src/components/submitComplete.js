@@ -3,17 +3,36 @@ import { useNavigate } from "react-router-dom";
 import { getAllVotes } from "../utils/API";
 import { FaCanadianMapleLeaf } from "react-icons/fa";
 
+const submitHeaderStyles = {
+  backgroundColor: "#ED452B",
+  color: "white",
+  width: "100%",
+  textAlign: "center",
+  padding: "1rem 0rem",
+  marginBottom: "1rem",
+};
 const submitDivStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  margin: "1rem 0rem",
-  textAlign: "center",
+};
+
+const gordImage = {
+  borderRadius: "50%",
+  width: "25px",
+  marginRight: ".5rem",
+};
+
+const styledTopGord = {
+  borderRadius: "50%",
+  width: "85px",
 };
 
 const iconStyle = {
-  color: "ED452B",
+  color: "white",
 };
+
+
 const SubmitComplete = () => {
   const [allVotes, setAllVotes] = useState([]);
   let ranking = 0;
@@ -43,36 +62,48 @@ const SubmitComplete = () => {
     let sortedData = data.sort((a, b) => a.vote_sum - b.vote_sum).reverse();
     console.log(sortedData);
     setAllVotes(sortedData);
-    console.log(allVotes);
   };
 
   useEffect(() => {
     getVotes();
   }, []);
+
   return (
     <div style={submitDivStyle}>
-      <div className="my-3">
+      <div style={submitHeaderStyles}>
         <h4>
           Thank you for rating <br></br>Canada's Gords
         </h4>
         <FaCanadianMapleLeaf style={iconStyle} size={30} />
       </div>
-      <div className="mb-3">See what the rest of the Country has to say</div>
-
-      <table>
+      {allVotes.map((votes, index) => {
+        if (index === 0) {
+          return (
+            <div
+              key={votes._id}
+              className="d-flex flex-column align-items-center mb-3"
+            >
+              <h5>Canada's Top Gord is...</h5>
+              <img style={styledTopGord} src={votes.img}></img>
+              <h5>{votes.name}</h5>
+              <div>{votes.bio}</div>
+            </div>
+          );
+        }
+      })}
+      <table class="responsiveTable">
         <tbody>
           <tr>
-            <th>RANKING</th>
+            <th className="text-center">RANK</th>
             <th>GORD</th>
-            <th>TOTAL VOTES</th>
           </tr>
           {allVotes.map((vote) => (
             <tr key={vote._id}>
               <td className="text-center">{++ranking}</td>
               <td>
+                <img style={gordImage} src={vote.img} />
                 {vote.name} <br></br>
               </td>
-              <td>{vote.vote_sum}</td>
             </tr>
           ))}
         </tbody>

@@ -6,7 +6,6 @@ const Rating = ({ gordId, chooseRating }) => {
   const [assignedRating, setAssignedRating] = useState(null);
   const [hover, setHover] = useState(null);
 
-
   return (
     <div className="text-center">
       {[...Array(5)].map((leaf, i) => {
@@ -14,6 +13,7 @@ const Rating = ({ gordId, chooseRating }) => {
         return (
           <label>
             <input
+              key={i}
               className="gordRatingTest"
               type="radio"
               dataid={gordId}

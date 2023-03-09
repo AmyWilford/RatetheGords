@@ -84,7 +84,9 @@ opacity: 1;
 
 
 /* Modal Table Styles */
-
+.responsiveTable {
+  width: 50%;
+}
 td, th{ 
   padding: .5rem 1rem;
   }
@@ -109,8 +111,6 @@ td, th{
 tr:hover {
   background-color: lightgray;
 }
-
-
   
 @media only screen and (max-width: 576px) {
   h1 {
@@ -118,6 +118,9 @@ tr:hover {
   }
  button {  
   padding: 5px;
+ }
+ .responsiveTable {
+  width: 80% !important
  }
 
 }
