@@ -33,7 +33,7 @@ This Project was built using:
 
 ## Usage-Installation
 
-To use this site, visit [www.ratethegords.ca](#www.ratethegords.ca/)
+To use this site, visit [www.ratethegords.ca](http://www.ratethegords.ca)
 
 ## Credits
 
