@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { getAllVotes } from "../utils/API";
 import { FaCanadianMapleLeaf } from "react-icons/fa";
 
+import Loading from "../components/Loading";
+
 const submitHeaderStyles = {
   backgroundColor: "#ED452B",
   color: "white",
@@ -35,6 +37,7 @@ const iconStyle = {
 const SubmitComplete = () => {
   const [allVotes, setAllVotes] = useState([]);
   const [voteTotal, setVoteTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   let ranking = 0;
 
@@ -54,6 +57,7 @@ const SubmitComplete = () => {
       let data = await response.json();
       sortData(data);
       setVoteTotal(data[0].votes.length);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -76,49 +80,62 @@ const SubmitComplete = () => {
         </h4>
         <FaCanadianMapleLeaf style={iconStyle} size={30} />
       </div>
-      {allVotes.map((votes, index) => {
-        if (index === 0) {
-          return (
-            <div
-              key={votes._id}
-              className="d-flex flex-column align-items-center mb-3 text-center"
-            >
-              <h5>Canada's Top Gord is...</h5>
-              <img style={styledTopGord} src={votes.img} alt={votes.name}></img>
-              <h5>{votes.name}</h5>
-            </div>
-          );
-        }
-        return;
-      })}
-      <table className="responsiveTable">
-        <tbody>
-          <tr>
-            <th colSpan="3" className="text-center">
-              Gord Power Rankings<br></br>
-              <small className="pt-3 text-right pb-4">
-                Total votes placed: {voteTotal}{" "}
-              </small>
-            </th>
-          </tr>
-          <tr>
-            <th className="text-center">RANK</th>
-            <th>GORD</th>
-          </tr>
-          {allVotes.map((vote) => (
-            <tr key={vote._id}>
-              <td className="text-center">{++ranking}</td>
-              <td>
-                <img style={gordImage} src={vote.img} alt={vote.name} />
-                {vote.name} <br></br>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <button className="custom-button" onClick={() => routeChangeGords()}>
-        rate the gords again
-      </button>
+      {loading && (
+        <div>
+          <Loading loadType={"results"} />
+        </div>
+      )}
+      {!loading && allVotes.length > 0 && (
+        <>
+          {allVotes.map((votes, index) => {
+            if (index === 0) {
+              return (
+                <div
+                  key={votes._id}
+                  className="d-flex flex-column align-items-center mb-3 text-center"
+                >
+                  <h5>Canada's Top Gord is...</h5>
+                  <img
+                    style={styledTopGord}
+                    src={votes.img}
+                    alt={votes.name}
+                  ></img>
+                  <h5>{votes.name}</h5>
+                </div>
+              );
+            }
+            return;
+          })}
+          <table className="responsiveTable">
+            <tbody>
+              <tr>
+                <th colSpan="3" className="text-center">
+                  Gord Power Rankings<br></br>
+                  <small className="pt-3 text-right pb-4">
+                    Total votes placed: {voteTotal}{" "}
+                  </small>
+                </th>
+              </tr>
+              <tr>
+                <th className="text-center">RANK</th>
+                <th>GORD</th>
+              </tr>
+              {allVotes.map((vote) => (
+                <tr key={vote._id}>
+                  <td className="text-center">{++ranking}</td>
+                  <td>
+                    <img style={gordImage} src={vote.img} alt={vote.name} />
+                    {vote.name} <br></br>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button className="custom-button" onClick={() => routeChangeGords()}>
+            rate the gords again
+          </button>
+        </>
+      )}
     </div>
   );
 };

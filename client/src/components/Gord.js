@@ -104,7 +104,7 @@ const Gord = () => {
     <div className="mb-5">
       {loading && (
         <div style={pageContainer}>
-          <Loading />
+          <Loading loadType={'Gords'}/>
         </div>
       )}
       {!loading && allGords.length > 0 && (
