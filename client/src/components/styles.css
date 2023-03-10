@@ -89,7 +89,7 @@ opacity: 1;
   border: 2px solid red !important
 }
 td, th{ 
-  padding: .5rem 1rem;
+  padding: .3rem 1rem;
   }
   table > tbody > tr:nth-child(1) {
     background-color: #ED452B;
