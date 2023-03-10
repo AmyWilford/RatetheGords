@@ -42,6 +42,8 @@ const gordImage = {
 
 const Modal = ({ open, children, onClose }) => {
   const [allVotes, setAllVotes] = useState([]);
+  const [voteTotal, setVoteTotal] = useState(0);
+
   let ranking = 0;
 
   const getVotes = async () => {
@@ -52,6 +54,7 @@ const Modal = ({ open, children, onClose }) => {
       }
       let data = await response.json();
       sortData(data);
+      setVoteTotal(data[0].votes.length);
     } catch (err) {
       console.error(err);
     }
@@ -83,7 +86,8 @@ const Modal = ({ open, children, onClose }) => {
           <tbody>
             <tr>
               <th colSpan="3" className="text-center">
-                Gord Power Rankings
+                Gord Power Rankings<br></br>
+                <small className="pt-3 text-right pb-4">Total votes placed: {voteTotal} </small>
               </th>
             </tr>
             <tr>

@@ -94,6 +94,14 @@ const SubmitComplete = () => {
       <table className="responsiveTable">
         <tbody>
           <tr>
+            <th colSpan="3" className="text-center">
+              Gord Power Rankings<br></br>
+              <small className="pt-3 text-right pb-4">
+                Total votes placed: {voteTotal}{" "}
+              </small>
+            </th>
+          </tr>
+          <tr>
             <th className="text-center">RANK</th>
             <th>GORD</th>
           </tr>
@@ -108,7 +116,6 @@ const SubmitComplete = () => {
           ))}
         </tbody>
       </table>
-      <small className="pt-3"> total votes placed: {voteTotal} </small>
       <button className="custom-button" onClick={() => routeChangeGords()}>
         rate the gords again
       </button>
