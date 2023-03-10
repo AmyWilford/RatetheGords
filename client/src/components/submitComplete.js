@@ -34,6 +34,8 @@ const iconStyle = {
 
 const SubmitComplete = () => {
   const [allVotes, setAllVotes] = useState([]);
+  const [voteTotal, setVoteTotal] = useState(0);
+
   let ranking = 0;
 
   const navigate = useNavigate();
@@ -51,6 +53,7 @@ const SubmitComplete = () => {
       }
       let data = await response.json();
       sortData(data);
+      setVoteTotal(data[0].votes.length);
     } catch (err) {
       console.error(err);
     }
@@ -81,12 +84,12 @@ const SubmitComplete = () => {
               className="d-flex flex-column align-items-center mb-3 text-center"
             >
               <h5>Canada's Top Gord is...</h5>
-              <img style={styledTopGord} src={votes.img}></img>
+              <img style={styledTopGord} src={votes.img} alt={votes.name}></img>
               <h5>{votes.name}</h5>
-              <div>{votes.bio}</div>
             </div>
           );
         }
+        return;
       })}
       <table className="responsiveTable">
         <tbody>
@@ -98,13 +101,14 @@ const SubmitComplete = () => {
             <tr key={vote._id}>
               <td className="text-center">{++ranking}</td>
               <td>
-                <img style={gordImage} src={vote.img} />
+                <img style={gordImage} src={vote.img} alt={vote.name} />
                 {vote.name} <br></br>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <small className="pt-3"> total votes placed: {voteTotal} </small>
       <button className="custom-button" onClick={() => routeChangeGords()}>
         rate the gords again
       </button>

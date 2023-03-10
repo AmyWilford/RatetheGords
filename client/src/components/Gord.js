@@ -93,6 +93,7 @@ const Gord = () => {
   };
   useEffect(() => {
     getTheGords();
+
   }, []);
 
   return (
@@ -104,16 +105,25 @@ const Gord = () => {
         {allGords.map((gord) => (
           <div key={gord._id} style={gordContainer} className="col-md-3 p-1">
             <div className="imageContainer">
-              <img className="box" style={gordImage} src={gord.img} alt={gord.name} />
-              <div className="box overlay"><p>{gord.bio}</p></div>
+              <img
+                className="box"
+                style={gordImage}
+                src={gord.img}
+                alt={gord.name}
+              />
+              <div className="box overlay">
+                <p>{gord.bio}</p>
+              </div>
             </div>
-            <p className="text-center gord-name font-weight-bold text-uppercase">{gord.name}</p>
+            <p className="text-center gord-name font-weight-bold text-uppercase">
+              {gord.name}
+            </p>
             <Rating gordId={gord._id} chooseRating={chooseRating} />
           </div>
         ))}
         <div id="alert" style={alertStyle}>
           <div>
-            All Gords need a ranking... <br></br>
+            All Gords need a rating... <br></br>
             It's the Canadian thing to do, eh?
           </div>
           <button

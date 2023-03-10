@@ -11,11 +11,12 @@
 - [Credits](#credits)
 
 ## Description
+
 Canada has a lot of iconic Gords and this is the site where you can rate them.
 
-Rate The Gord users can submit their own Gord Ratings (on a scale of 1 - 5 maple leafs). Not sure who a Gord is? Hover over their image to see a quick bio explaining why they are an iconic Gord.  Power rankings are available on the home page and after rating submission so you can always see who is Canada's current top-rate Gord. 
+Rate The Gord users can submit their own Gord Ratings (on a scale of 1 - 5 maple leafs). Not sure who a Gord is? Hover over their image to see a quick bio explaining why they are an iconic Gord. Power rankings are available on the home page and after rating submission so you can always see who is Canada's current top-rate Gord.
 
-Rate The Gords is a responsive and mobile-friendly MERN stack application.  
+Rate The Gords is a responsive and mobile-friendly MERN stack application.
 
 ## Technologies
 
@@ -32,7 +33,7 @@ This Project was built using:
 
 ## Usage-Installation
 
-To use this site, visit [ratethegords.ca](#https://ratethegords.ca)
+To use this site, visit [www.ratethegords.ca](#www.ratethegords.ca/)
 
 ## Credits
 

@@ -54,7 +54,7 @@ button.custom-button:hover{
   color: white;
 }
 
-button.custom-buttontton:hover:after {
+button.custom-button:hover:after {
   opacity: 1;
   right: 20px;
 }
