@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Rate the Canadian Gords",
   "main": "server/server.js",
-  "engines":{
-    "node":"16.x",
+  "engines": {
+    "node": "16.x",
     "npm": "8.x"
   },
   "scripts": {
@@ -13,7 +13,6 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
     "seed": "cd server && npm run seed"
-
   },
   "repository": {
     "type": "git",
@@ -26,7 +25,9 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "bootstrap": "^5.0.2",
     "cors": "^2.8.5",
+    "react-bootstrap": "^2.7.2",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.2"
   }

@@ -4,6 +4,8 @@ import { getGords } from "../utils/API";
 import Rating from "./Rating";
 import "./styles.css";
 
+import Loading from "../components/Loading";
+
 const pageContainer = {
   paddingTop: "15rem",
 };
@@ -36,6 +38,7 @@ const alertConfirmationStyle = {
 const Gord = () => {
   const [allGords, setAllGords] = useState([]);
   const [childRating, setChildRating] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -62,8 +65,10 @@ const Gord = () => {
       }
       let data = await response.json();
       setAllGords(data);
+      setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   };
   const handleVote = (response) => {
@@ -92,62 +97,68 @@ const Gord = () => {
     }
   };
   useEffect(() => {
-    getTheGords();
-
+      getTheGords();
   }, []);
 
   return (
     <div className="mb-5">
-      <div
-        style={pageContainer}
-        className="row d-flex justify-content-center flex-wrap"
-      >
-        {allGords.map((gord) => (
-          <div key={gord._id} style={gordContainer} className="col-md-3 p-1">
-            <div className="imageContainer">
-              <img
-                className="box"
-                style={gordImage}
-                src={gord.img}
-                alt={gord.name}
-              />
-              <div className="box overlay">
-                <p>{gord.bio}</p>
+      {loading && (
+        <div style={pageContainer}>
+          <Loading />
+        </div>
+      )}
+      {!loading && allGords.length > 0 && (
+        <div
+          style={pageContainer}
+          className="row d-flex justify-content-center flex-wrap"
+        >
+          {allGords.map((gord) => (
+            <div key={gord._id} style={gordContainer} className="col-md-3 p-1">
+              <div className="imageContainer">
+                <img
+                  className="box"
+                  style={gordImage}
+                  src={gord.img}
+                  alt={gord.name}
+                />
+                <div className="box overlay">
+                  <p>{gord.bio}</p>
+                </div>
               </div>
+              <p className="text-center gord-name font-weight-bold text-uppercase">
+                {gord.name}
+              </p>
+              <Rating gordId={gord._id} chooseRating={chooseRating} />
             </div>
-            <p className="text-center gord-name font-weight-bold text-uppercase">
-              {gord.name}
-            </p>
-            <Rating gordId={gord._id} chooseRating={chooseRating} />
+          ))}
+          <div id="alert" style={alertStyle}>
+            <div>
+              All Gords need a rating... <br></br>
+              It's the Canadian thing to do, eh?
+            </div>
+            <button
+              style={alertConfirmationStyle}
+              className="btn btn-link hoverStye"
+              onClick={() => {
+                document.getElementById("alert").style.display = "none";
+                document.getElementById("submitButton").style.display = "block";
+              }}
+            >
+              Finish Ratings
+            </button>
           </div>
-        ))}
-        <div id="alert" style={alertStyle}>
-          <div>
-            All Gords need a rating... <br></br>
-            It's the Canadian thing to do, eh?
+          <div className="d-flex w-100 submitbutton-row">
+            <button
+              type="submit"
+              id="submitButton"
+              className="custom-button"
+              onClick={handleSubmit}
+            >
+              submit ratings
+            </button>
           </div>
-          <button
-            style={alertConfirmationStyle}
-            className="btn btn-link hoverStye"
-            onClick={() => {
-              document.getElementById("alert").style.display = "none";
-              document.getElementById("submitButton").style.display = "block";
-            }}
-          >
-            Finish Ratings
-          </button>
         </div>
-        <div className="d-flex w-100 submitbutton-row">
-          <button
-            type="submit"
-            id="submitButton"
-            className="custom-button"
-            onClick={handleSubmit}
-          >
-            submit ratings
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
